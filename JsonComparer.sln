@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Console", "JsonComparer.Console\JsonComparer.Console.csproj", "{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Core", "JsonComparer.Core\JsonComparer.Core.csproj", "{0929C18D-1691-4846-B63E-038BC8336FFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0929C18D-1691-4846-B63E-038BC8336FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0929C18D-1691-4846-B63E-038BC8336FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0929C18D-1691-4846-B63E-038BC8336FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0929C18D-1691-4846-B63E-038BC8336FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
