@@ -1,0 +1,19 @@
+﻿{
+  "version":  "v1",
+  "data": [
+    {
+      "name": "BigEgg",
+      "age": 30,
+      "gender": "Male"
+    },
+    {
+      "name": "Pupil",
+      "age": 31,
+      "gender": "Female"
+    }
+  ],
+  "status": {
+    "progess": 1,
+    "total":  10
+  }
+}

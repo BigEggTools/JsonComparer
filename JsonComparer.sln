@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Console", "Jso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Core", "JsonComparer.Core\JsonComparer.Core.csproj", "{0929C18D-1691-4846-B63E-038BC8336FFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Services", "JsonComparer.Services\JsonComparer.Services.csproj", "{FE0618C8-4FA5-43A3-9148-40A4ED08EFD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Services.Tests", "JsonComparer.Services.Tests\JsonComparer.Services.Tests.csproj", "{ED50AF6C-6591-4362-8792-A15C2A2483D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0929C18D-1691-4846-B63E-038BC8336FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0929C18D-1691-4846-B63E-038BC8336FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0929C18D-1691-4846-B63E-038BC8336FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0618C8-4FA5-43A3-9148-40A4ED08EFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0618C8-4FA5-43A3-9148-40A4ED08EFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0618C8-4FA5-43A3-9148-40A4ED08EFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0618C8-4FA5-43A3-9148-40A4ED08EFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED50AF6C-6591-4362-8792-A15C2A2483D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED50AF6C-6591-4362-8792-A15C2A2483D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED50AF6C-6591-4362-8792-A15C2A2483D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED50AF6C-6591-4362-8792-A15C2A2483D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
