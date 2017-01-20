@@ -52,7 +52,7 @@
         [TestClass]
         public class WriteJsonFileTest : TestClassBase
         {
-            private const string NEW_FILE_PATH = "TestData\\NewJson.json";
+            private const string NEW_FILE_PATH = "out\\NewJson.json";
 
             protected override void OnTestCleanup()
             {

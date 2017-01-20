@@ -69,6 +69,10 @@
             Trace.Indent();
             Trace.TraceInformation($"Start to write data to file {path}");
 
+            if (!Directory.Exists(Path.GetDirectoryName(path)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+            }
             using (StreamWriter sw = new StreamWriter(path))
             using (JsonTextWriter writer = new JsonTextWriter(sw))
             {
