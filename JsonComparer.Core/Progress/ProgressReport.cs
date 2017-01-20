@@ -5,7 +5,7 @@
     /// <summary>
     /// The progress report model
     /// </summary>
-    public class ProgressReport
+    public class ProgressReport : IProgressReport
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProgressReport"/> class.
