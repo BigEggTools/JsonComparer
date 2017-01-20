@@ -1,2 +1,2 @@
 # JsonComparer
-The tool to compare JSON file(s) and output the different with Excel Report
+The tool to compare JSON file(s) and output the differences in Excel Report
