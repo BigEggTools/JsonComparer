@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace JsonComparer.Services.Tests
+﻿namespace BigEgg.Tools.JsonComparer.Services.Tests
 {
     using System;
     using System.IO;
@@ -15,14 +14,13 @@ namespace JsonComparer.Services.Tests
         private const string TEST_JSON_FILE = "TestData\\SimpleJson.json";
 
         [TestClass]
-        public class ReadJsonFileTest
+        public class ReadJsonFileTest : TestClassBase
         {
-            private IJsonDocumentService service = new JsonDocumentService();
-
             [TestMethod]
             [ExpectedException(typeof(ArgumentException))]
             public void Path_Null()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var result = service.ReadJsonFile(null);
             }
 
@@ -30,6 +28,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Path_EmptyString()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var result = service.ReadJsonFile(string.Empty);
             }
 
@@ -37,25 +36,25 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(FileNotFoundException))]
             public void FileNotExist()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var result = service.ReadJsonFile("notExist.json");
             }
 
             [TestMethod]
             public void ExistFile()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var result = service.ReadJsonFile(TEST_JSON_FILE);
                 Assert.IsNotNull(result);
             }
         }
 
         [TestClass]
-        public class WriteJsonFileTest
+        public class WriteJsonFileTest : TestClassBase
         {
             private const string NEW_FILE_PATH = "TestData\\NewJson.json";
-            private IJsonDocumentService service = new JsonDocumentService();
 
-            [TestCleanup]
-            public void TestCleanup()
+            protected override void OnTestCleanup()
             {
                 if (File.Exists(NEW_FILE_PATH))
                 {
@@ -67,6 +66,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentNullException))]
             public void Data_Null()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 service.WriteJsonFile(null, NEW_FILE_PATH);
             }
 
@@ -74,6 +74,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Path_Null()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 service.WriteJsonFile(jsonObject, null);
@@ -83,6 +84,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Path_Empty()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 service.WriteJsonFile(jsonObject, string.Empty);
@@ -91,6 +93,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void FileNotExist()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 service.WriteJsonFile(jsonObject, NEW_FILE_PATH);
@@ -103,6 +106,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void FileExisted()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 service.WriteJsonFile(jsonObject, NEW_FILE_PATH);
@@ -115,19 +119,19 @@ namespace JsonComparer.Services.Tests
         }
 
         [TestClass]
-        public class GetNodeTest
+        public class GetNodeTest : TestClassBase
         {
             private const string VERSION_NODE_NAME = "version";
             private const string DATA_NODE_NAME = "data";
             private const string DATA_AGE_NODE_NAME = "age";
             private const string STATUS_NODE_NAME = "status";
             private const string STATUS_PROGESS_NODE_NAME = "progress";
-            private IJsonDocumentService service = new JsonDocumentService();
 
             [TestMethod]
             [ExpectedException(typeof(ArgumentNullException))]
             public void Data_Null()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 service.GetNode(null, DATA_NODE_NAME);
             }
 
@@ -135,6 +139,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void NodeName_Null()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, null);
@@ -144,6 +149,7 @@ namespace JsonComparer.Services.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void NodeName_EmptyString()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, string.Empty);
@@ -152,6 +158,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeExist_Array()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, DATA_NODE_NAME);
@@ -163,6 +170,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeExist_Token()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, VERSION_NODE_NAME);
@@ -174,6 +182,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeExist_Object()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, STATUS_NODE_NAME);
@@ -185,6 +194,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeExist_InObject()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, STATUS_PROGESS_NODE_NAME);
@@ -196,6 +206,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeExist_InArray()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, DATA_AGE_NODE_NAME);
@@ -207,6 +218,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeNotExist()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, "NotExist");
@@ -216,6 +228,7 @@ namespace JsonComparer.Services.Tests
             [TestMethod]
             public void NodeCaseNotMatch()
             {
+                var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
                 var result = service.GetNode(jsonObject, DATA_NODE_NAME.ToUpper(), StringComparison.Ordinal);

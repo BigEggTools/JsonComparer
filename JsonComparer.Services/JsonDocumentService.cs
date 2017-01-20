@@ -52,7 +52,11 @@
         /// <param name="path">The file path.</param>
         /// <exception cref="System.UnauthorizedAccessException">Access is denied.</exception>
         /// <exception cref="System.ArgumentNullException">Data is null.</exception>
-        /// <exception cref="System.ArgumentException">Path is an empty string ("") or null. -or-path contains the name of a system device (com1, com2, and so on).</exception>
+        /// <exception cref="System.ArgumentException">
+        /// Path is an empty string ("") or null.
+        /// or
+        /// Path contains the name of a system device (com1, com2, and so on).
+        /// </exception>
         /// <exception cref="System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
         /// <exception cref="System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must not exceed 248 characters, and file names must not exceed 260 characters.</exception>
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label syntax.</exception>
