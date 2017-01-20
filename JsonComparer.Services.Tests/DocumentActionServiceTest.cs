@@ -178,23 +178,22 @@
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }
 
+            private static int calledCount_SplitObjectInObject = 0;
+
             [TestMethod]
             public async Task SplitObjectInObject_WithProgress()
             {
                 var service = Container.GetExportedValue<IDocumentActionService>();
-                var calledCount = 0;
+                calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
-                    calledCount++;
                     Assert.AreEqual(2, report.Total);
-                    Assert.IsTrue(report.Current >= 0);
-                    Assert.IsTrue(report.Current <= 2);
+                    Assert.AreEqual(calledCount_SplitObjectInObject, report.Current);
                 });
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, DATA_NODE_NAME, progress);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\BigEgg.json"));
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\Pupil.json"));
-                Assert.AreEqual(4, calledCount);
 
                 var documentSrv = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\BigEgg.json");
@@ -205,23 +204,22 @@
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }
 
+            private static int calledCount_SplitObjectInArray = 0;
+
             [TestMethod]
             public async Task SplitObjectInArray_WithProgress()
             {
                 var service = Container.GetExportedValue<IDocumentActionService>();
-                var calledCount = 0;
+                calledCount_SplitObjectInArray = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
-                    calledCount++;
                     Assert.AreEqual(2, report.Total);
-                    Assert.IsTrue(report.Current >= 0);
-                    Assert.IsTrue(report.Current <= 2);
+                    Assert.AreEqual(calledCount_SplitObjectInArray, report.Current);
                 });
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, ARRAY_NODE_NAME, progress);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\1.json"));
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\2.json"));
-                Assert.AreEqual(4, calledCount);
 
                 var documentSrv = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\1.json");

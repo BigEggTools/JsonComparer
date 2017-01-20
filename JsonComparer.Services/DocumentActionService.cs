@@ -144,16 +144,15 @@
                 if (!Directory.Exists(outputPath)) { Directory.CreateDirectory(outputPath); }
                 for (int i = 0; i < length; i++)
                 {
+                    reportProgress(progress, new ProgressReport(i + 1, length));
                     if (properties[i].Value.Type != JTokenType.Object) { continue; }
 
                     var fileName = outputFileNamePattern
                             .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME, properties[i].Name)
                             .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX, (i + 1).ToString());
                     jsonDocumentService.WriteJsonFile((JObject)(properties[i].Value), $"{outputPath}/{fileName}.json");
-                    reportProgress(progress, new ProgressReport(i + 1, length));
                 }
 
-                reportProgress(progress, new ProgressReport(length, length));
                 Trace.TraceInformation($"Split Complete");
                 Trace.Unindent();
             });
@@ -175,16 +174,15 @@
                 if (!Directory.Exists(outputPath)) { Directory.CreateDirectory(outputPath); }
                 for (int i = 0; i < length; i++)
                 {
+                    reportProgress(progress, new ProgressReport(i + 1, length));
                     if (children[i].Type != JTokenType.Object) { continue; }
 
                     var fileName = outputFileNamePattern
                             .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME, string.Empty)
                             .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX, (i + 1).ToString());
                     jsonDocumentService.WriteJsonFile((JObject)(children[i]), $"{outputPath}/{fileName}.json");
-                    reportProgress(progress, new ProgressReport(i + 1, length));
                 }
 
-                reportProgress(progress, new ProgressReport(length, length));
                 Trace.TraceInformation($"Split Complete");
                 Trace.Unindent();
             });
