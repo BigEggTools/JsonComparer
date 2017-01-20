@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.Composition;
     using System.Diagnostics;
     using System.IO;
 
@@ -11,7 +12,8 @@
     /// <summary>
     /// The base logic for reading, writing JSON file, and find the JSON node in JSON.
     /// </summary>
-    public abstract class JsonDocumentServiceBase
+    [Export(typeof(IJsonDocumentService))]
+    public class JsonDocumentService : IJsonDocumentService
     {
         /// <summary>
         /// Reads the json file and return a <see cref="Newtonsoft.Json.Linq.JToken"/> object.
@@ -22,7 +24,7 @@
         /// <exception cref="System.IO.FileNotFoundException">The file cannot be found.</exception>
         /// <exception cref="System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive.</exception>
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label.</exception>
-        protected JToken ReadJsonFile(string path)
+        public JToken ReadJsonFile(string path)
         {
             if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
 
@@ -55,7 +57,7 @@
         /// <exception cref="System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must not exceed 248 characters, and file names must not exceed 260 characters.</exception>
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label syntax.</exception>
         /// <exception cref="System.Security.SecurityException">The caller does not have the required permission.</exception>
-        protected void WriteJsonFile(JToken data, string path)
+        public void WriteJsonFile(JToken data, string path)
         {
             if (data == null) { throw new ArgumentNullException("data"); }
             if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
@@ -87,7 +89,7 @@
         /// </returns>
         /// <exception cref="System.ArgumentNullException">JsonObject is null</exception>
         /// <exception cref="System.ArgumentException">NodeName is null or empty string.</exception>
-        protected JToken GetNode(JToken jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
+        public JToken GetNode(JToken jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
         {
             if (jsonObject == null) { throw new ArgumentNullException("jsonObject"); }
             if (string.IsNullOrWhiteSpace(nodeName)) { throw new ArgumentException("nodeName"); }
