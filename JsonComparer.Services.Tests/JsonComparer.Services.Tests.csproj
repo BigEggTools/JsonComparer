@@ -55,11 +55,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DocumentActionServiceTest.cs" />
     <Compile Include="JsonDocumentServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClassBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
+      <Project>{0929c18d-1691-4846-b63e-038bc8336ffa}</Project>
+      <Name>JsonComparer.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JsonComparer.Services\JsonComparer.Services.csproj">
       <Project>{fe0618c8-4fa5-43a3-9148-40a4ed08efd2}</Project>
       <Name>JsonComparer.Services</Name>
@@ -68,6 +73,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="TestData\SimpleJson.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\JsonDocToSplit.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

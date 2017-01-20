@@ -41,6 +41,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="DocumentActionService.cs" />
+    <Compile Include="IDocumentActionService.cs" />
     <Compile Include="IJsonDocumentService.cs" />
     <Compile Include="JsonDocumentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
