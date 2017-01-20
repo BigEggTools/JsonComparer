@@ -14,15 +14,15 @@
     public abstract class JsonDocumentServiceBase
     {
         /// <summary>
-        /// Reads the json file and return a <see cref="Newtonsoft.Json.Linq.JObject"/> object.
+        /// Reads the json file and return a <see cref="Newtonsoft.Json.Linq.JToken"/> object.
         /// </summary>
         /// <param name="path">The file path.</param>
-        /// <returns>The <see cref="Newtonsoft.Json.Linq.JObject"/> object.</returns>
+        /// <returns>The <see cref="Newtonsoft.Json.Linq.JToken"/> object.</returns>
         /// <exception cref="System.ArgumentException">Path is an empty string ("") or null.</exception>
         /// <exception cref="System.IO.FileNotFoundException">The file cannot be found.</exception>
         /// <exception cref="System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive.</exception>
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label.</exception>
-        protected JObject ReadJsonFile(string path)
+        protected JToken ReadJsonFile(string path)
         {
             if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
 
@@ -32,20 +32,19 @@
             using (StreamReader sr = new StreamReader(path))
             using (JsonTextReader reader = new JsonTextReader(sr))
             {
-                var result = (JObject)JToken.ReadFrom(reader);
-                if (result == null)
-                {
-                    Trace.TraceWarning($"Failed to read data in file {path}");
-                }
+                var result = JToken.ReadFrom(reader);
 
-                Trace.TraceInformation($"End to read data in file {path}");
+                Trace.TraceWarning(result == null
+                    ? $"Failed to read data in file {path}"
+                    : $"End to read data in file {path}");
                 Trace.Unindent();
+
                 return result;
             }
         }
 
         /// <summary>
-        /// Writes the <see cref="Newtonsoft.Json.Linq.JObject"/> object to a json file.
+        /// Writes the <see cref="Newtonsoft.Json.Linq.JToken"/> object to a json file.
         /// </summary>
         /// <param name="data">The JSON data.</param>
         /// <param name="path">The file path.</param>
@@ -56,7 +55,7 @@
         /// <exception cref="System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must not exceed 248 characters, and file names must not exceed 260 characters.</exception>
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label syntax.</exception>
         /// <exception cref="System.Security.SecurityException">The caller does not have the required permission.</exception>
-        protected void WriteJsonFile(JObject data, string path)
+        protected void WriteJsonFile(JToken data, string path)
         {
             if (data == null) { throw new ArgumentNullException("data"); }
             if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
@@ -78,7 +77,7 @@
         }
 
         /// <summary>
-        /// Gets the JSON node from a <see cref="Newtonsoft.Json.Linq.JContainer" /> object.
+        /// Gets the JSON node from a <see cref="Newtonsoft.Json.Linq.JToken" /> object.
         /// </summary>
         /// <param name="jsonObject">The root json object.</param>
         /// <param name="nodeName">The node's name.</param>
@@ -88,7 +87,7 @@
         /// </returns>
         /// <exception cref="System.ArgumentNullException">JsonObject is null</exception>
         /// <exception cref="System.ArgumentException">NodeName is null or empty string.</exception>
-        protected JToken GetNode(JObject jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
+        protected JToken GetNode(JToken jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
         {
             if (jsonObject == null) { throw new ArgumentNullException("jsonObject"); }
             if (string.IsNullOrWhiteSpace(nodeName)) { throw new ArgumentException("nodeName"); }
@@ -96,36 +95,65 @@
             Trace.Indent();
             Trace.TraceInformation($"Start Finding '{nodeName}' node");
 
-            var queue = new Queue<JObject>();
+            var queue = new Queue<JToken>();
             queue.Enqueue(jsonObject);
 
+            JToken result = null;
             do
             {
                 var node = queue.Dequeue();
-                var properties = node.Properties();
-
-                foreach (var property in properties)
+                switch (node.Type)
                 {
-                    if (property.Name.Equals(nodeName, comparisonType))
-                    {
-                        queue.Clear();
-
-                        var result = property.Value;
-
-                        Trace.TraceInformation($"End Finding '{nodeName}' node");
-                        Trace.Unindent();
-
-                        return result;
-                    }
-                    if (property.HasValues && property.Value.Type == JTokenType.Object)
-                    {
-                        queue.Enqueue((JObject)property.Value);
-                    }
+                    case JTokenType.Object:
+                        result = FindNodeInJObject((JObject)node, nodeName, comparisonType, queue);
+                        break;
+                    case JTokenType.Array:
+                        result = FindNodeInJArray((JArray)node, nodeName, comparisonType, queue);
+                        break;
                 }
+
+                if (result != null) { queue.Clear(); }
             } while (queue.Count != 0);
 
-            Trace.TraceWarning($"Failed to get '{nodeName}' node in file");
+            Trace.TraceWarning(result == null
+                ? $"Failed to get '{nodeName}' node in file"
+                : $"End Finding '{nodeName}' node");
             Trace.Unindent();
+
+            return result;
+        }
+
+        private JToken FindNodeInJObject(JObject node, string nodeName, StringComparison comparisonType, Queue<JToken> queue)
+        {
+            var properties = node.Properties();
+
+            foreach (var property in properties)
+            {
+                if (property.Name.Equals(nodeName, comparisonType)) { return property.Value; }
+
+                if (property.HasValues &&
+                    (property.Value.Type == JTokenType.Object ||
+                     property.Value.Type == JTokenType.Array))
+                {
+                    queue.Enqueue(property.Value);
+                }
+            }
+            return null;
+        }
+
+        private JToken FindNodeInJArray(JArray node, string nodeName, StringComparison comparisonType, Queue<JToken> queue)
+        {
+            var children = node.Children();
+
+            foreach (var child in children)
+            {
+                if (child.HasValues &&
+                    (child.Type == JTokenType.Object ||
+                     child.Type == JTokenType.Array))
+                {
+                    queue.Enqueue(child);
+                }
+            }
             return null;
         }
     }

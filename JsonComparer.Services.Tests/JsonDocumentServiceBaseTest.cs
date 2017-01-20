@@ -130,7 +130,9 @@ namespace JsonComparer.Services.Tests
         {
             private const string VERSION_NODE_NAME = "version";
             private const string DATA_NODE_NAME = "data";
+            private const string DATA_AGE_NODE_NAME = "age";
             private const string STATUS_NODE_NAME = "status";
+            private const string STATUS_PROGESS_NODE_NAME = "progress";
 
             [TestMethod]
             [ExpectedException(typeof(ArgumentNullException))]
@@ -198,6 +200,30 @@ namespace JsonComparer.Services.Tests
             }
 
             [TestMethod]
+            public void NodeExist_InObject()
+            {
+                var service = new JsonDocumentService();
+                var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
+
+                var result = service.GetNode(jsonObject, STATUS_PROGESS_NODE_NAME);
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(JValue));
+                Assert.AreEqual(1L, ((JValue)result).Value);
+            }
+
+            [TestMethod]
+            public void NodeExist_InArray()
+            {
+                var service = new JsonDocumentService();
+                var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
+
+                var result = service.GetNode(jsonObject, DATA_AGE_NODE_NAME);
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(JValue));
+                Assert.AreEqual(30L, ((JValue)result).Value);
+            }
+
+            [TestMethod]
             public void NodeNotExist()
             {
                 var service = new JsonDocumentService();
@@ -220,17 +246,17 @@ namespace JsonComparer.Services.Tests
 
         public class JsonDocumentService : JsonDocumentServiceBase
         {
-            public new JObject ReadJsonFile(string filePath)
+            public new JToken ReadJsonFile(string filePath)
             {
                 return base.ReadJsonFile(filePath);
             }
 
-            public new void WriteJsonFile(JObject data, string filePath)
+            public new void WriteJsonFile(JToken data, string filePath)
             {
                 base.WriteJsonFile(data, filePath);
             }
 
-            public new JToken GetNode(JObject jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
+            public new JToken GetNode(JToken jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
             {
                 return base.GetNode(jsonObject, nodeName, comparisonType);
             }
