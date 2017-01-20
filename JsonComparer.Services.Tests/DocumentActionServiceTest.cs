@@ -22,7 +22,7 @@
             private const string NUMBER_NODE_NAME = "number";
             private const string DATA_NODE_NAME = "data";
             private const string STATUS_NODE_NAME = "status";
-            private readonly static string OutputFileNamePattern = "name_" + Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER;
+            private readonly static string OutputFileNamePattern = $"name_{Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME}_{Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX}";
 
             protected override void OnTestCleanup()
             {
@@ -148,14 +148,14 @@
                 var service = Container.GetExportedValue<IDocumentActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, DATA_NODE_NAME, OutputFileNamePattern);
 
-                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_BigEgg.json"));
-                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_Pupil.json"));
+                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_BigEgg_1.json"));
+                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_Pupil_2.json"));
 
                 var documentSrv = Container.GetExportedValue<IJsonDocumentService>();
-                var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_BigEgg.json");
+                var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_BigEgg_1.json");
                 var valueNode = documentSrv.GetNode(jsonObj, "age");
                 Assert.AreEqual(30L, ((JValue)valueNode).Value);
-                jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_Pupil.json");
+                jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_Pupil_2.json");
                 valueNode = documentSrv.GetNode(jsonObj, "age");
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }
@@ -166,14 +166,14 @@
                 var service = Container.GetExportedValue<IDocumentActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, ARRAY_NODE_NAME, OutputFileNamePattern);
 
-                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_1.json"));
-                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_2.json"));
+                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name__1.json"));
+                Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name__2.json"));
 
                 var documentSrv = Container.GetExportedValue<IJsonDocumentService>();
-                var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_1.json");
+                var jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name__1.json");
                 var valueNode = documentSrv.GetNode(jsonObj, "age");
                 Assert.AreEqual(30L, ((JValue)valueNode).Value);
-                jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name_2.json");
+                jsonObj = documentSrv.ReadJsonFile($"{OUTPUT_PATH}\\name__2.json");
                 valueNode = documentSrv.GetNode(jsonObj, "age");
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }

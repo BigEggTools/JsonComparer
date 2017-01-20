@@ -61,7 +61,7 @@
         /// </exception>
         public async Task SplitFile(string fileName, string outputPath, string nodeName, IProgress<IProgressReport> progress = null)
         {
-            await SplitFile(fileName, outputPath, nodeName, Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER, progress);
+            await SplitFile(fileName, outputPath, nodeName, string.Empty, progress);
         }
 
         /// <summary>
@@ -130,6 +130,8 @@
 
         private Task SplitObject(JObject node, string outputPath, string outputFileNamePattern, string nodeName, IProgress<IProgressReport> progress)
         {
+            if (string.IsNullOrWhiteSpace(outputFileNamePattern)) { outputFileNamePattern = Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME; }
+
             return Task.Factory.StartNew(() =>
             {
                 Trace.Indent();
@@ -144,7 +146,9 @@
                 {
                     if (properties[i].Value.Type != JTokenType.Object) { continue; }
 
-                    var fileName = outputFileNamePattern.Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER, properties[i].Name);
+                    var fileName = outputFileNamePattern
+                            .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME, properties[i].Name)
+                            .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX, (i + 1).ToString());
                     jsonDocumentService.WriteJsonFile((JObject)(properties[i].Value), $"{outputPath}/{fileName}.json");
                     reportProgress(progress, new ProgressReport(i + 1, length));
                 }
@@ -157,6 +161,8 @@
 
         private Task SplitArray(JArray node, string outputPath, string outputFileNamePattern, string nodeName, IProgress<IProgressReport> progress)
         {
+            if (string.IsNullOrWhiteSpace(outputFileNamePattern)) { outputFileNamePattern = Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX; }
+
             return Task.Factory.StartNew(() =>
             {
                 Trace.Indent();
@@ -171,7 +177,9 @@
                 {
                     if (children[i].Type != JTokenType.Object) { continue; }
 
-                    var fileName = outputFileNamePattern.Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER, (i + 1).ToString());
+                    var fileName = outputFileNamePattern
+                            .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME, string.Empty)
+                            .Replace(Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_INDEX, (i + 1).ToString());
                     jsonDocumentService.WriteJsonFile((JObject)(children[i]), $"{outputPath}/{fileName}.json");
                     reportProgress(progress, new ProgressReport(i + 1, length));
                 }
