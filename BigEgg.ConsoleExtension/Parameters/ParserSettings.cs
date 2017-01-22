@@ -15,55 +15,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserSettings"/> class.
         /// </summary>
-        /// <param name="caseSensitive">The value indicating whether the parser shall ignore the given argument if it is an unknown arguments.</param>
-        /// <param name="ignoreUnknownArguments">The value indicating whether the parser shall ignore the given argument if it encounter an unknown arguments.</param>
-        public ParserSettings(bool caseSensitive = true, bool ignoreUnknownArguments = true)
-            : this(Console.Error, CultureInfo.InvariantCulture, caseSensitive, ignoreUnknownArguments)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ParserSettings"/> class.
-        /// </summary>
-        /// <param name="helpWriter">The <see cref="System.IO.TextWriter"/> used for help method output.</param>
-        /// <param name="caseSensitive">The value indicating whether the parser shall ignore the given argument if it is an unknown arguments.</param>
-        /// <param name="ignoreUnknownArguments">The value indicating whether the parser shall ignore the given argument if it encounter an unknown arguments.</param>
-        public ParserSettings(TextWriter helpWriter, bool caseSensitive = true, bool ignoreUnknownArguments = true)
-            : this(helpWriter, CultureInfo.InvariantCulture, caseSensitive, ignoreUnknownArguments)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ParserSettings"/> class.
-        /// </summary>
-        /// <param name="parsingCulture">The culture used when parsing arguments to typed properties.</param>
-        /// <param name="caseSensitive">The value indicating whether the parser shall ignore the given argument if it is an unknown arguments.</param>
-        /// <param name="ignoreUnknownArguments">The value indicating whether the parser shall ignore the given argument if it encounter an unknown arguments.</param>
-        public ParserSettings(CultureInfo parsingCulture, bool caseSensitive = true, bool ignoreUnknownArguments = true)
-            : this(Console.Error, parsingCulture, caseSensitive, ignoreUnknownArguments)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ParserSettings" /> class.
-        /// </summary>
-        /// <param name="helpWriter">The <see cref="System.IO.TextWriter"/> used for help method output.</param>
-        /// <param name="parsingCulture">The culture used when parsing arguments to typed properties.</param>
-        /// <param name="caseSensitive">The value indicating whether the parser shall ignore the given argument if it is an unknown arguments.</param>
-        /// <param name="ignoreUnknownArguments">The value indicating whether the parser shall ignore the given argument if it encounter an unknown arguments.</param>
-        public ParserSettings(TextWriter helpWriter, CultureInfo parsingCulture, bool caseSensitive = true, bool ignoreUnknownArguments = true)
-        {
-            HelpWriter = helpWriter;
-            ParsingCulture = parsingCulture;
-            CaseSensitive = caseSensitive;
-            IgnoreUnknownArguments = ignoreUnknownArguments;
-
-            try
-            {
-                MaximumDisplayWidth = Console.WindowWidth;
-            }
-            catch (IOException)
-            {
-                MaximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH;
-            }
-        }
+        private ParserSettings() { }
 
         /// <summary>
         /// Finalizes an instance of the <see cref="ParserSettings"/> class.
@@ -123,6 +75,16 @@
 
 
         /// <summary>
+        /// The builder to create a parser settings model
+        /// </summary>
+        /// <returns>The builder to create a parser settings model</returns>
+        public static ParserSettingsBuilder Builder()
+        {
+            return new ParserSettingsBuilder();
+        }
+
+
+        /// <summary>
         /// Releases managed resources.
         /// </summary>
         public void Dispose()
@@ -140,6 +102,113 @@
             {
                 // Do not dispose HelpWriter. It is the caller's responsibility.
                 disposed = true;
+            }
+        }
+
+
+        /// <summary>
+        /// The builder to create a parser settings model
+        /// </summary>
+        public class ParserSettingsBuilder
+        {
+            private ParserSettings instance;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ParserSettingsBuilder"/> class.
+            /// </summary>
+            public ParserSettingsBuilder()
+            {
+                instance = new ParserSettings();
+            }
+
+
+            /// <summary>
+            /// Use the default settings.
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder WithDefault()
+            {
+                instance.HelpWriter = Console.Error;
+                instance.ParsingCulture = CultureInfo.InvariantCulture;
+                instance.CaseSensitive = true;
+                instance.IgnoreUnknownArguments = true;
+                instance.MaximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the <see cref="System.IO.TextWriter"/> used for help method output.
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder HelpWriter(TextWriter helpWriter)
+            {
+                if (helpWriter == null) { throw new ArgumentNullException("helpWriter"); }
+                instance.HelpWriter = helpWriter;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the culture used when parsing arguments to typed properties.
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder ParsingCulture(CultureInfo parsingCulture)
+            {
+                if (parsingCulture == null) { throw new ArgumentNullException("parsingCulture"); }
+                instance.ParsingCulture = parsingCulture;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets a value indicating whether the parser shall ignore the given argument if it is an unknown arguments.
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder CaseSensitive(bool caseSensitive)
+            {
+                instance.CaseSensitive = caseSensitive;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets a value indicating whether the parser shall ignore the given argument if it encounter an unknown arguments
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder IgnoreUnknownArguments(bool ignoreUnknownArguments)
+            {
+                instance.IgnoreUnknownArguments = ignoreUnknownArguments;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the maximum width of the display.
+            /// </summary>
+            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
+            public ParserSettingsBuilder ComputeDisplayWidth()
+            {
+                try
+                {
+                    instance.MaximumDisplayWidth = Console.WindowWidth;
+                }
+                catch (IOException)
+                {
+                    instance.MaximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH;
+                }
+                return this;
+            }
+
+            /// <summary>
+            /// Return the instance of parser settings model.
+            /// </summary>
+            /// <returns>The instance of parser settings model</returns>
+            /// <exception cref="System.ArgumentNullException">
+            /// HelpWriter cannot be null.
+            /// or
+            /// ParsingCulture cannot be null.
+            /// </exception>
+            public ParserSettings Build()
+            {
+                if (instance.HelpWriter == null) { throw new ArgumentNullException("HelpWriter"); }
+                if (instance.ParsingCulture == null) { throw new ArgumentNullException("ParsingCulture"); }
+                return instance;
             }
         }
     }
