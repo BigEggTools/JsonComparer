@@ -39,6 +39,9 @@
     <Compile Include="Parameters\Attributes\CommandAttribute.cs" />
     <Compile Include="Parameters\Errors\Error.cs" />
     <Compile Include="Parameters\Errors\ErrorType.cs" />
+    <Compile Include="Parameters\Errors\CommandHelpRequestError.cs" />
+    <Compile Include="Parameters\Errors\VersionRequestError.cs" />
+    <Compile Include="Parameters\Errors\HelpRequestError.cs" />
     <Compile Include="Parameters\Output\TextBuilder.cs" />
     <Compile Include="Parameters\Parser.cs" />
     <Compile Include="Parameters\ParserSettings.cs" />
