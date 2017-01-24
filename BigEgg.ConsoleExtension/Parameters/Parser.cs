@@ -62,12 +62,10 @@
             ParserResult result = null;
 
 
-            if (result.ResultType == ParserResultType.ParseFailed)
-            {
-                settings.HelpWriter.Write(TextBuilder.BuildHelp(((ParseFailedResult)result).Errors, settings.MaximumDisplayWidth));
-            }
-
-            return ((ParseSuccessResult)result).Value;
+            settings.HelpWriter.Write(TextBuilder.Build(result, settings.MaximumDisplayWidth));
+            return result.ResultType == ParserResultType.ParseSuccess ?
+                ((ParseSuccessResult)result).Value :
+                null;
         }
 
 

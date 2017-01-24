@@ -5,10 +5,20 @@
     using System.Linq;
 
     using BigEgg.ConsoleExtension.Parameters.Errors;
+    using BigEgg.ConsoleExtension.Parameters.Results;
 
     internal class TextBuilder
     {
-        internal static string BuildHelp(IEnumerable<Error> errors, int maximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH)
+        internal static string Build(ParserResult result, int maximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH)
+        {
+            if (result.ResultType == ParserResultType.ParseFailed)
+            {
+                return BuildHelp(((ParseFailedResult)result).Errors, maximumDisplayWidth);
+            }
+            return string.Empty;
+        }
+
+        private static string BuildHelp(IEnumerable<Error> errors, int maximumDisplayWidth)
         {
             if (errors.Any(e => e.ErrorType == ErrorType.VersionRequest)) { return BuildVersionText(); }
             throw new NotImplementedException();
