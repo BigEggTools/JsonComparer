@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Parameters\Attributes\AssemblyHeaderAttribute.cs" />
     <Compile Include="Parameters\Attributes\CommandAttribute.cs" />
     <Compile Include="Parameters\Errors\Error.cs" />
     <Compile Include="Parameters\Errors\ErrorType.cs" />
