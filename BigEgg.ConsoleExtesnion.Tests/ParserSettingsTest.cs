@@ -6,7 +6,7 @@
     using BigEgg.ConsoleExtension.Parameters;
 
     [TestClass]
-    public class ParserSettingTest
+    public class ParserSettingsTest
     {
         [TestMethod]
         public void DisposeTest_NotDisposeHelpWriter()
