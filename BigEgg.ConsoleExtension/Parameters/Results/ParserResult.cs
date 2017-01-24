@@ -1,7 +1,5 @@
 ﻿namespace BigEgg.ConsoleExtension.Parameters.Results
 {
-    using System;
-
     /// <summary>
     /// The base parser result.
     /// </summary>

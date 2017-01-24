@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BigEgg.ConsoleExtension.Parameters.Errors
+﻿namespace BigEgg.ConsoleExtension.Parameters.Errors
 {
+    using System;
+
     internal class CommandHelpRequestError : Error
     {
         public CommandHelpRequestError()

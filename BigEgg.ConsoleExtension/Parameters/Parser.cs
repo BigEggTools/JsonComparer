@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     using BigEgg.ConsoleExtension.Parameters.Output;
-    using Results;
+    using BigEgg.ConsoleExtension.Parameters.Results;
 
     /// <summary>
     /// The parser to parse the console arguments

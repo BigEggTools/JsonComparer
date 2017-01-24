@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BigEgg.ConsoleExtension.Parameters.Output
+﻿namespace BigEgg.ConsoleExtension.Parameters.Output
 {
+    using System;
+
     internal static class OutputFormat
     {
         public static string PROGRAM_INFO = "{0} {1}";

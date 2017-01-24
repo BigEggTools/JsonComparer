@@ -18,6 +18,7 @@
             return string.Empty;
         }
 
+
         private static string BuildHelp(IEnumerable<Error> errors, int maximumDisplayWidth)
         {
             if (errors.Any(e => e.ErrorType == ErrorType.VersionRequest)) { return BuildVersionText(); }
