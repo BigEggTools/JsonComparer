@@ -1,9 +1,9 @@
-﻿namespace BigEgg.ConsoleExtension.Parameters
+﻿namespace BigEgg.ConsoleExtension.Parameters.Errors
 {
     /// <summary>
     /// The base class of error
     /// </summary>
-    public abstract class Error
+    internal abstract class Error
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Error"/> class.

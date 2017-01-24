@@ -1,11 +1,17 @@
-﻿namespace BigEgg.ConsoleExtension.Parameters
+﻿namespace BigEgg.ConsoleExtension.Parameters.Results
 {
+    using System;
+
     /// <summary>
     /// The base parser result.
     /// </summary>
-    public abstract class ParserResult
+    internal abstract class ParserResult
     {
-        internal ParserResult(ParserResultType resultType)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParserResult"/> class.
+        /// </summary>
+        /// <param name="resultType">Type of the result.</param>
+        protected ParserResult(ParserResultType resultType)
         {
             ResultType = resultType;
         }

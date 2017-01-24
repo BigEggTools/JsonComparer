@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-
-namespace BigEgg.ConsoleExtension.Parameters
+﻿namespace BigEgg.ConsoleExtension.Parameters.Results
 {
+    using System.Collections.Generic;
+
+    using BigEgg.ConsoleExtension.Parameters.Errors;
+
     /// <summary>
     /// The parse failed result, contains parsing errors.
     /// </summary>
-    public class ParseFailedResult : ParserResult
+    internal class ParseFailedResult : ParserResult
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParseFailedResult"/> class.

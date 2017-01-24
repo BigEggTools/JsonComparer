@@ -1,14 +1,22 @@
 ﻿namespace BigEgg.ConsoleExtension.Parameters
 {
     using System;
+    using System.Collections.Generic;
+
+    using BigEgg.ConsoleExtension.Parameters.Output;
+    using Results;
 
     /// <summary>
     /// The parser to parse the console arguments
     /// </summary>
     public class Parser : IDisposable
     {
-        private static readonly Lazy<Parser> DefaultParser = new Lazy<Parser>(
-            () => new Parser(ParserSettings.Builder().WithDefault().Build()));
+        private static readonly Lazy<Parser> defaultParser = new Lazy<Parser>(() =>
+            new Parser(
+                ParserSettings.Builder().WithDefault()
+                                        .Build()
+            )
+        );
         private readonly ParserSettings settings;
         private bool disposed;
 
@@ -34,7 +42,32 @@
         /// </summary>
         public static Parser Default
         {
-            get { return DefaultParser.Value; }
+            get { return defaultParser.Value; }
+        }
+
+
+        /// <summary>
+        /// Parses the console arguments to command.
+        /// </summary>
+        /// <param name="args">The console arguments.</param>
+        /// <param name="types">The supported command types.</param>
+        /// <returns>The command type</returns>
+        public object Parse(IEnumerable<string> args, params Type[] types)
+        {
+            if (args == null) throw new ArgumentNullException("args");
+            if (types == null) throw new ArgumentNullException("types");
+            if (types.Length == 0) throw new ArgumentOutOfRangeException("types");
+
+
+            ParserResult result = null;
+
+
+            if (result.ResultType == ParserResultType.ParseFailed)
+            {
+                settings.HelpWriter.Write(TextBuilder.BuildHelp(((ParseFailedResult)result).Errors, settings.MaximumDisplayWidth));
+            }
+
+            return ((ParseSuccessResult)result).Value;
         }
 
 
