@@ -1,4 +1,4 @@
-﻿namespace BigEgg.ConsoleExtesnion.Tests
+﻿namespace BigEgg.ConsoleExtesnion.Tests.Parameters
 {
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

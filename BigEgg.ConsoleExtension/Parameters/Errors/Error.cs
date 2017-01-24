@@ -12,7 +12,7 @@
         /// <param name="stopProcessing">if set to <c>true</c> should stops processing parse.</param>
         protected Error(ErrorType errorType, bool stopProcessing)
         {
-            ErrorType = ErrorType;
+            ErrorType = errorType;
             StopProcessing = stopProcessing;
         }
 
