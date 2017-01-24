@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Services.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.ConsoleExtension", "BigEgg.ConsoleExtension\BigEgg.ConsoleExtension.csproj", "{664CE9B8-05CD-4117-993B-D918C056F630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.ConsoleExtesnion.Tests", "BigEgg.ConsoleExtesnion.Tests\BigEgg.ConsoleExtesnion.Tests.csproj", "{5AD1519B-DE7A-4973-ACF1-7D76F39E54B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.ConsoleExtension.Tests", "BigEgg.ConsoleExtension.Tests\BigEgg.ConsoleExtension.Tests.csproj", "{5AD1519B-DE7A-4973-ACF1-7D76F39E54B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
