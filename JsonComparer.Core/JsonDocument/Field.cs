@@ -17,6 +17,7 @@
             if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
             Name = name;
             Type = type;
+            Value = string.Empty;
         }
 
         /// <summary>
