@@ -5,26 +5,23 @@
     /// <summary>
     /// The compare value
     /// </summary>
-    public class CompareValue
+    public class CompareValue : IEquatable<CompareValue>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CompareValue"/> class.
         /// </summary>
         /// <param name="name">The field name.</param>
-        /// <param name="value1">The first value.</param>
-        /// <param name="value2">The secend value.</param>
+        /// <param name="value">The value.</param>
         /// <exception cref="System.ArgumentException">
         /// The field name, first value and second value cannot be null or empty
         /// </exception>
-        public CompareValue(string name, string value1, string value2)
+        internal CompareValue(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
-            if (string.IsNullOrWhiteSpace(value1)) { throw new ArgumentException("value1"); }
-            if (string.IsNullOrWhiteSpace(value2)) { throw new ArgumentException("value2"); }
+            if (string.IsNullOrWhiteSpace(value)) { throw new ArgumentException("value"); }
 
             Name = name;
-            Value1 = value1;
-            Value2 = value2;
+            Value = value;
         }
 
 
@@ -37,27 +34,25 @@
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the first value.
+        /// Gets the value.
         /// </summary>
         /// <value>
-        /// The first value.
+        /// The value.
         /// </value>
-        public string Value1 { get; private set; }
+        public string Value { get; private set; }
 
         /// <summary>
-        /// Gets the second value.
+        /// Indicates whether the current object is equal to another object of the same type.
         /// </summary>
-        /// <value>
-        /// The second value.
-        /// </value>
-        public string Value2 { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether the 2 value is equal.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if the 2 value is equal; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsEqual { get { return Value1.Equals(Value2, StringComparison.InvariantCulture); } }
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        /// <exception cref="System.NotSupportedException">Should only check equals on same field.</exception>
+        public bool Equals(CompareValue other)
+        {
+            if (this.Name != other.Name) { throw new NotSupportedException("Should only check equals on same field."); }
+            return this.Value.Equals(other.Value);
+        }
     }
 }
