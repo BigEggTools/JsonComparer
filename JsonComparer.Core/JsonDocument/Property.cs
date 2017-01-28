@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// The property inforamtion of the JSON Document
@@ -14,8 +15,13 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Property" /> class.
         /// </summary>
-        public Property()
+        /// <param name="name">The property name.</param>
+        /// <exception cref="System.ArgumentException">The name cannot be null or empty.</exception>
+        public Property(string name)
         {
+            if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
+            Name = name;
+
             fields = new Dictionary<string, Field>();
             fields.Add(DefaultField.DEFAULT_FIELD_NAME, new DefaultField());
         }
@@ -23,18 +29,25 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Property"/> class with fields information.
         /// </summary>
+        /// <param name="name">The property name.</param>
         /// <param name="fieldInfos">The fields information.</param>
-        /// <exception cref="ArgumentNullException">fieldInfos</exception>
-        public Property(IList<KeyValuePair<string, FieldType>> fieldInfos)
+        /// <exception cref="System.ArgumentException">The name cannot be null or empty.</exception>
+        /// <exception cref="ArgumentNullException">FieldInfos cannot be null.</exception>
+        public Property(string name, IList<KeyValuePair<string, FieldType>> fieldInfos)
         {
+            if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
             if (fieldInfos == null || fieldInfos.Count < 1) { throw new ArgumentNullException("fieldInfos"); }
 
-            fields = new Dictionary<string, Field>();
-            foreach (var fieldInfo in fieldInfos)
-            {
-                fields.Add(fieldInfo.Key, new Field(fieldInfo.Key, fieldInfo.Value));
-            }
+            fields = fieldInfos.ToDictionary(item => item.Key, item => new Field(item.Key, item.Value));
         }
+
+        /// <summary>
+        /// Gets or sets the name of the property.
+        /// </summary>
+        /// <value>
+        /// The name of the property.
+        /// </value>
+        public string Name { get; set; }
 
         /// <summary>
         /// Updates the value of the field.

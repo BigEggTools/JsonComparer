@@ -37,8 +37,8 @@
             if (!this.properties.ContainsKey(properyName))
             {
                 Property property = fieldInfos.Count == 0
-                    ? new Property()
-                    : new Property(fieldInfos);
+                    ? new Property(properyName)
+                    : new Property(properyName, fieldInfos);
 
                 this.properties.Add(properyName, property);
             }
