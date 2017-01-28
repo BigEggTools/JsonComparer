@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.ConsoleExtension.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Reports", "JsonComparer.Reports\JsonComparer.Reports.csproj", "{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Core.Tests", "JsonComparer.Core.Tests\JsonComparer.Core.Tests.csproj", "{FFACE19D-2F07-4757-8AAA-B271F217B77B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
