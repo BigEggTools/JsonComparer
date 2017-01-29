@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using BigEgg.ConsoleExtension.Parameters.Output;
     using BigEgg.ConsoleExtension.Parameters.Results;
+    using BigEgg.ConsoleExtension.Parameters.Tokens;
 
     /// <summary>
     /// The parser to parse the console arguments
@@ -58,6 +60,7 @@
             if (types == null) throw new ArgumentNullException("types");
             if (types.Length == 0) throw new ArgumentOutOfRangeException("types");
 
+            var tokens = args.ToList().ToTokens();
 
             ParserResult result = null;
 
@@ -68,8 +71,7 @@
                 null;
         }
 
-
-
+        #region Implement IDisposable Interface
         /// <summary>
         /// Releases managed resources.
         /// </summary>
@@ -92,5 +94,6 @@
                 disposed = true;
             }
         }
+        #endregion
     }
 }

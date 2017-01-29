@@ -58,6 +58,7 @@
     <Compile Include="Parameters\Tokens\CommandToken.cs" />
     <Compile Include="Parameters\Tokens\FlagToken.cs" />
     <Compile Include="Parameters\Tokens\PropertyToken.cs" />
+    <Compile Include="Parameters\Tokens\Tokenizer.cs" />
     <Compile Include="Parameters\Tokens\VersionToken.cs" />
     <Compile Include="Parameters\Tokens\HelpToken.cs" />
     <Compile Include="Parameters\Tokens\Token.cs" />
