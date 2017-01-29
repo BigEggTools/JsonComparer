@@ -46,6 +46,7 @@
     <Compile Include="Parameters\Output\ProgramInfo.cs" />
     <Compile Include="Parameters\Output\OutputFormat.cs" />
     <Compile Include="Parameters\Output\TextBuilder.cs" />
+    <Compile Include="Parameters\ParameterConstants.cs" />
     <Compile Include="Parameters\Parser.cs" />
     <Compile Include="Parameters\ParserSettings.cs" />
     <Compile Include="Parameters\Attributes\StringPropertyAttribute.cs" />
@@ -54,6 +55,14 @@
     <Compile Include="Parameters\Results\ParserResult.cs" />
     <Compile Include="Parameters\Results\ParserResultType.cs" />
     <Compile Include="Parameters\Results\ParseSuccessResult.cs" />
+    <Compile Include="Parameters\Tokens\CommandToken.cs" />
+    <Compile Include="Parameters\Tokens\FlagToken.cs" />
+    <Compile Include="Parameters\Tokens\PropertyToken.cs" />
+    <Compile Include="Parameters\Tokens\VersionToken.cs" />
+    <Compile Include="Parameters\Tokens\HelpToken.cs" />
+    <Compile Include="Parameters\Tokens\Token.cs" />
+    <Compile Include="Parameters\Tokens\TokenType.cs" />
+    <Compile Include="Parameters\Tokens\UnknownToken.cs" />
     <Compile Include="Parameters\Utils\ReflectionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

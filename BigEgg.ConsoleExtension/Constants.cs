@@ -2,6 +2,6 @@
 {
     internal static class Constants
     {
-        internal const int DEFAULT_MAX_CONSOLE_LENGTH = 80;
+        public const int DEFAULT_MAX_CONSOLE_LENGTH = 80;
     }
 }
