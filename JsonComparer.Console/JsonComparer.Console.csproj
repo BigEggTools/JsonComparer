@@ -41,6 +41,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parameters\SplitParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BigEgg.ConsoleExtension\BigEgg.ConsoleExtension.csproj">
+      <Project>{664ce9b8-05cd-4117-993b-d918c056f630}</Project>
+      <Name>BigEgg.ConsoleExtension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
       <Project>{0929c18d-1691-4846-b63e-038bc8336ffa}</Project>
       <Name>JsonComparer.Core</Name>

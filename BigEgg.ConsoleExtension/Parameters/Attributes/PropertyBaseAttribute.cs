@@ -74,6 +74,6 @@
         /// <value>
         /// The default value.
         /// </value>
-        public object DefaultValue { get; set; }
+        protected object DefaultValue { get; set; }
     }
 }

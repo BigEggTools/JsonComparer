@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BigEgg.ConsoleExtension.Parameters;
+using BigEgg.Tools.JsonComparer.Parameters;
 
 namespace BigEgg.Tools.JsonComparer
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            var parameter = Parser.Default.Parse(args, typeof(SplitParameter));
+            if (parameter == null) { return; }
         }
     }
 }

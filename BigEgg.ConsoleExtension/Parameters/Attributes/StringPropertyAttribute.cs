@@ -31,6 +31,10 @@
         /// <value>
         /// The default value.
         /// </value>
-        public new string DefaultValue { get; set; }
+        public new string DefaultValue
+        {
+            get { return base.DefaultValue as string; }
+            set { base.DefaultValue = value; }
+        }
     }
 }
