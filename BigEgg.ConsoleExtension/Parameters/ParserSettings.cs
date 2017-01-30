@@ -39,17 +39,6 @@
         public TextWriter HelpWriter { get; private set; }
 
         /// <summary>
-        /// Gets the culture used when parsing arguments to typed properties.
-        /// </summary>
-        /// <value>
-        /// The culture used when parsing arguments to typed properties.
-        /// </value>
-        /// <remarks>
-        /// Default is invariant culture, <see cref="System.Globalization.CultureInfo.InvariantCulture"/>.
-        /// </remarks>
-        public CultureInfo ParsingCulture { get; private set; }
-
-        /// <summary>
         /// Gets a value indicating whether the parser shall ignore the given argument if it is an unknown arguments.
         /// </summary>
         /// <value>
@@ -129,7 +118,6 @@
             public ParserSettingsBuilder WithDefault()
             {
                 instance.HelpWriter = Console.Error;
-                instance.ParsingCulture = CultureInfo.InvariantCulture;
                 instance.CaseSensitive = true;
                 instance.IgnoreUnknownArguments = true;
                 instance.MaximumDisplayWidth = Constants.DEFAULT_MAX_CONSOLE_LENGTH;
@@ -144,17 +132,6 @@
             {
                 if (helpWriter == null) { throw new ArgumentNullException("helpWriter"); }
                 instance.HelpWriter = helpWriter;
-                return this;
-            }
-
-            /// <summary>
-            /// Sets the culture used when parsing arguments to typed properties.
-            /// </summary>
-            /// <returns>The <see cref="ParserSettingsBuilder"/>.</returns>
-            public ParserSettingsBuilder ParsingCulture(CultureInfo parsingCulture)
-            {
-                if (parsingCulture == null) { throw new ArgumentNullException("parsingCulture"); }
-                instance.ParsingCulture = parsingCulture;
                 return this;
             }
 
@@ -207,7 +184,6 @@
             public ParserSettings Build()
             {
                 if (instance.HelpWriter == null) { throw new ArgumentNullException("HelpWriter"); }
-                if (instance.ParsingCulture == null) { throw new ArgumentNullException("ParsingCulture"); }
                 return instance;
             }
         }
