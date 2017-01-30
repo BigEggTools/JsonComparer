@@ -6,13 +6,13 @@
 
     internal static class Tokenizer
     {
-        public static IDictionary<string, Token> ToTokens(this IList<string> args)
+        public static IList<Token> ToTokens(this IList<string> args)
         {
-            var result = new Dictionary<string, Token>();
+            var result = new List<Token>();
             var index = 0;
             if (!WithPrefixDash(args[0]))
             {
-                result.Add(ParameterConstants.TOKEN_COMMAMD_NAME, new CommandToken(args.First()));
+                result.Add(new CommandToken(args.First()));
                 index++;
             }
 
@@ -32,11 +32,11 @@
                 {
                     if (string.IsNullOrWhiteSpace(tokenName))
                     {
-                        result.Add(args[index], new UnknownToken(args[index]));
+                        result.Add(new UnknownToken(args[index]));
                     }
                     else
                     {
-                        result.Add(args[index], new PropertyToken(tokenName, args[index]));
+                        result.Add(new PropertyToken(tokenName, args[index]));
                         tokenName = string.Empty;
                     }
                 }
@@ -59,21 +59,20 @@
             return arg.Substring(2);
         }
 
-        private static void ParseFlagToken(IDictionary<string, Token> tokens, string tokenName)
+        private static void ParseFlagToken(IList<Token> tokens, string tokenName)
         {
             if (tokenName.Equals(ParameterConstants.TOKEN_HELP_NAME, StringComparison.OrdinalIgnoreCase))
             {
-                tokens.Add(ParameterConstants.TOKEN_HELP_NAME, new HelpToken());
+                tokens.Add(new HelpToken());
             }
             else if (tokenName.Equals(ParameterConstants.TOKEN_VERSION_NAME, StringComparison.OrdinalIgnoreCase))
             {
-                tokens.Add(ParameterConstants.TOKEN_VERSION_NAME, new VersionToken());
+                tokens.Add(new VersionToken());
             }
             else
             {
-                tokens.Add(tokenName, new FlagToken(tokenName));
+                tokens.Add(new FlagToken(tokenName));
             }
-
         }
     }
 }
