@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Reflection;
 
-    internal class ReflectionHelper
+    internal static class ReflectionHelper
     {
         public static TAttribute GetAssemblyAttribute<TAttribute>() where TAttribute : Attribute
         {
@@ -14,6 +14,16 @@
         public static Assembly GetAssembly()
         {
             return Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
+        }
+
+        public static CommandAttribute GetCommand(this Type type)
+        {
+            var attribute = type.GetTypeInfo()
+                                .GetCustomAttributes(typeof(CommandAttribute), true)
+                                .FirstOrDefault();
+            return attribute == null
+                ? null
+                : (CommandAttribute)attribute;
         }
     }
 }
