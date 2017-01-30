@@ -6,7 +6,7 @@
 
     internal class ReflectionHelper
     {
-        public static TAttribute GetAttribute<TAttribute>() where TAttribute : Attribute
+        public static TAttribute GetAssemblyAttribute<TAttribute>() where TAttribute : Attribute
         {
             return GetAssembly().GetCustomAttributes<TAttribute>().FirstOrDefault();
         }

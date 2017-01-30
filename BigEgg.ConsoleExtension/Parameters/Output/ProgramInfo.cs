@@ -56,12 +56,12 @@
 
         private static string GetAssemblyCopyright()
         {
-            return ReflectionHelper.GetAttribute<AssemblyCopyrightAttribute>().Copyright;
+            return ReflectionHelper.GetAssemblyAttribute<AssemblyCopyrightAttribute>().Copyright;
         }
 
         private static string GetAssemblyProduct()
         {
-            return ReflectionHelper.GetAttribute<AssemblyProductAttribute>().Product;
+            return ReflectionHelper.GetAssemblyAttribute<AssemblyProductAttribute>().Product;
         }
     }
 }
