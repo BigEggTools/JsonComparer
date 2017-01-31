@@ -25,6 +25,6 @@
         /// <value>
         /// The errors.
         /// </value>
-        public IEnumerable<Error> Errors { get; set; }
+        public IEnumerable<Error> Errors { get; private set; }
     }
 }

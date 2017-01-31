@@ -46,6 +46,7 @@
     <Compile Include="Parameters\Logicals\CommandHelpProcessor.cs" />
     <Compile Include="Parameters\Logicals\IProcessor.cs" />
     <Compile Include="Parameters\Logicals\DefaultHelpProcessor.cs" />
+    <Compile Include="Parameters\Logicals\ProcessorEngine.cs" />
     <Compile Include="Parameters\Logicals\VersionProcessor.cs" />
     <Compile Include="Parameters\Output\ProgramInfo.cs" />
     <Compile Include="Parameters\Output\OutputFormat.cs" />
