@@ -8,6 +8,8 @@
 
     internal interface IProcessor
     {
-        ParserResult Process(IList<Token> tokens, IList<Type> types, bool CaseSensitive);
+        bool NeedType { get; }
+
+        ParserResult Process(IList<Token> tokens, Type type, bool caseSensitive);
     }
 }

@@ -8,7 +8,7 @@
     using BigEgg.ConsoleExtension.Parameters.Tokens;
     using BigEgg.ConsoleExtension.Parameters.Errors;
 
-    internal class VersionProcessor : IProcessor
+    internal class DefaultHelpProcessor : IProcessor
     {
         public bool NeedType { get { return false; } }
 
@@ -16,11 +16,9 @@
         {
             if (tokens == null) { throw new ArgumentNullException("tokens"); }
 
-            if (tokens.Any(t => t.TokenType == TokenType.Version))
-            {
-                return new ParseFailedResult(new List<Error>() { new VersionRequestError() });
-            }
-            return null;
+            return tokens.Any(t => t.TokenType == TokenType.Help)
+                ? new ParseFailedResult(new List<Error>() { new HelpRequestError() })
+                : null;
         }
     }
 }

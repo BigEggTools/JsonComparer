@@ -43,6 +43,10 @@
     <Compile Include="Parameters\Errors\CommandHelpRequestError.cs" />
     <Compile Include="Parameters\Errors\VersionRequestError.cs" />
     <Compile Include="Parameters\Errors\HelpRequestError.cs" />
+    <Compile Include="Parameters\Logicals\CommandHelpProcessor.cs" />
+    <Compile Include="Parameters\Logicals\IProcessor.cs" />
+    <Compile Include="Parameters\Logicals\DefaultHelpProcessor.cs" />
+    <Compile Include="Parameters\Logicals\VersionProcessor.cs" />
     <Compile Include="Parameters\Output\ProgramInfo.cs" />
     <Compile Include="Parameters\Output\OutputFormat.cs" />
     <Compile Include="Parameters\Output\TextBuilder.cs" />
