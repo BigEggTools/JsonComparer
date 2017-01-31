@@ -10,9 +10,12 @@
     internal class ProcessorEngine
     {
         private readonly IList<IProcessor> processors;
+        private readonly ParserSettings settings;
 
-        public ProcessorEngine()
+        public ProcessorEngine(ParserSettings settings)
         {
+            this.settings = settings;
+
             processors = new List<IProcessor>()
             {
                 new VersionProcessor(),
@@ -22,7 +25,7 @@
         }
 
 
-        public ParserResult Handle(IList<Token> tokens, IList<Type> types, bool ignoreUnknownArguments, bool caseSensitive)
+        public ParserResult Handle(IList<Token> tokens, IList<Type> types)
         {
             ParserResult result = null;
             ParserResult newResult = null;
@@ -30,7 +33,7 @@
             {
                 if (!processor.NeedType)
                 {
-                    newResult = processor.Process(tokens, null, caseSensitive);
+                    newResult = processor.Process(tokens, null, settings.CaseSensitive);
                     result = MergeResult(result, newResult);
 
                     if (!ShouldContinue(result)) { return result; }
@@ -39,7 +42,7 @@
 
                 foreach (var type in types)
                 {
-                    newResult = processor.Process(tokens, type, caseSensitive);
+                    newResult = processor.Process(tokens, type, settings.CaseSensitive);
                     result = MergeResult(result, newResult);
 
                     if (!ShouldContinue(result)) { return result; }

@@ -7,6 +7,7 @@
     using BigEgg.ConsoleExtension.Parameters.Output;
     using BigEgg.ConsoleExtension.Parameters.Results;
     using BigEgg.ConsoleExtension.Parameters.Tokens;
+    using Logicals;
 
     /// <summary>
     /// The parser to parse the console arguments
@@ -14,13 +15,19 @@
     public class Parser : IDisposable
     {
         private static readonly Lazy<Parser> defaultParser = new Lazy<Parser>(() =>
-            new Parser(
-                ParserSettings.Builder().WithDefault()
-                                        .Build()
-            )
+            new Parser()
         );
         private readonly ParserSettings settings;
+        private readonly ProcessorEngine engine;
         private bool disposed;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Parser"/> class with a specific setting, <seealso cref="ParserSettings"/>.
+        /// </summary>
+        public Parser()
+            : this(ParserSettings.Builder().WithDefault()
+                                        .Build())
+        { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Parser"/> class with a specific setting, <seealso cref="ParserSettings"/>.
@@ -29,6 +36,8 @@
         public Parser(ParserSettings settings)
         {
             this.settings = settings;
+
+            engine = new ProcessorEngine(this.settings);
         }
 
         /// <summary>
@@ -62,8 +71,7 @@
 
             var tokens = args.ToList().ToTokens();
 
-            ParserResult result = null;
-
+            ParserResult result = engine.Handle(tokens, types.ToList());
 
             settings.HelpWriter.Write(TextBuilder.Build(result, settings.MaximumDisplayWidth));
             return result.ResultType == ParserResultType.ParseSuccess ?
