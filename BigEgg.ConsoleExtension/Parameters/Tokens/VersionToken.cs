@@ -3,7 +3,7 @@
     internal class VersionToken : Token
     {
         public VersionToken()
-            : base(ParameterConstants.TOKEN_VERSION_NAME, TokenType.Help)
+            : base(ParameterConstants.TOKEN_VERSION_NAME, TokenType.Version)
         { }
     }
 }

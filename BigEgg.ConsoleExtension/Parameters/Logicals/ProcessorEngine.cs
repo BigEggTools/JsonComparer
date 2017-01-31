@@ -65,6 +65,7 @@
 
         private bool ShouldContinue(ParserResult result)
         {
+            if (result == null) { return true; }
             if (result.ResultType == ParserResultType.ParseSuccess) { return false; }
 
             var failedResult = result as ParseFailedResult;
