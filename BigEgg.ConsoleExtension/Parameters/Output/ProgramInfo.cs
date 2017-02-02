@@ -35,7 +35,7 @@
 
         public override string ToString()
         {
-            return OutputFormat.PROGRAM_INFO.FormatWithNewLine(Title, Version);
+            return $"{Title} {Version}" + Environment.NewLine;
         }
 
         public static implicit operator string(ProgramInfo headerText)

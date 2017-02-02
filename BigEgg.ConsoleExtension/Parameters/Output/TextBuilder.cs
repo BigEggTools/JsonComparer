@@ -21,18 +21,19 @@
 
         private static string BuildHelp(IEnumerable<Error> errors, int maximumDisplayWidth)
         {
-            if (errors.Any(e => e.ErrorType == ErrorType.VersionRequest)) { return BuildVersionText(); }
+            if (errors.Any(e => e.ErrorType == ErrorType.VersionRequest)) { return BuildVersionText(maximumDisplayWidth); }
             throw new NotImplementedException();
         }
 
 
-        private static string BuildVersionText()
+        private static string BuildVersionText(int maximumDisplayWidth)
         {
-            return OutputFormat.VERSION_TITLE.FormatWithNewLine(
+            return OutputFormat.VERSION_TITLE.Format(
                 ProgramInfo.Default.Title,
                 ProgramInfo.Default.Version,
                 ProgramInfo.Default.Copyright,
-                ProgramInfo.Default.Product
+                ProgramInfo.Default.Product,
+                maximumDisplayWidth
             );
         }
     }
