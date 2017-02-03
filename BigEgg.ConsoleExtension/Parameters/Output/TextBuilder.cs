@@ -28,7 +28,7 @@
 
         private static string BuildVersionText(int maximumDisplayWidth)
         {
-            return OutputFormat.VERSION_TITLE.Format(
+            return OutputFormat.VERSION_INFO.Format(
                 ProgramInfo.Default.Title,
                 ProgramInfo.Default.Version,
                 ProgramInfo.Default.Copyright,

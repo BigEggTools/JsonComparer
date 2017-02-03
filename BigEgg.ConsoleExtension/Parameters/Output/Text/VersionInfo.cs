@@ -3,14 +3,14 @@
     using System;
     using System.Collections.Generic;
 
-    internal class VersionTitle : OutputFormatBase
+    internal class VersionInfo : OutputFormatBase
     {
         private const string NAME_REPLACER = "|NAME|";
         private const string VERSION_REPLACER = "|VERSION|";
         private const string PRODUCT_REPLACER = "|PRODUCT|";
         private const string COPYRIGHT_REPLACER = "|COPYRIGHT|";
 
-        public VersionTitle()
+        public VersionInfo()
         {
             formatStrings = new string[]
             {

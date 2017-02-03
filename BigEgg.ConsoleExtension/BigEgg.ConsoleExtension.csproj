@@ -52,7 +52,7 @@
     <Compile Include="Parameters\Output\ProgramInfo.cs" />
     <Compile Include="Parameters\Output\OutputFormat.cs" />
     <Compile Include="Parameters\Output\TextBuilder.cs" />
-    <Compile Include="Parameters\Output\Text\VersionTitle.cs" />
+    <Compile Include="Parameters\Output\Text\VersionInfo.cs" />
     <Compile Include="Parameters\ParameterConstants.cs" />
     <Compile Include="Parameters\Parser.cs" />
     <Compile Include="Parameters\ParserSettings.cs" />

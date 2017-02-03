@@ -4,8 +4,8 @@
 
     internal static class OutputFormat
     {
-        private static VersionTitle versionTitle = new VersionTitle();
+        private static VersionInfo versionInfo = new VersionInfo();
 
-        public static VersionTitle VERSION_TITLE { get { return versionTitle; } }
+        public static VersionInfo VERSION_INFO { get { return versionInfo; } }
     }
 }

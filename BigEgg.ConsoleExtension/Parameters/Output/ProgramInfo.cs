@@ -12,10 +12,10 @@
 
         private ProgramInfo()
         {
-            Title = GetAssemblyName();
-            Version = GetAssemblyVersion();
-            Copyright = GetAssemblyCopyright();
-            Product = GetAssemblyProduct();
+            Title = ReflectionHelper.GetAssembly().GetName().Name;
+            Version = ReflectionHelper.GetAssembly().GetName().Version.ToString();
+            Copyright = ReflectionHelper.GetAssemblyAttribute<AssemblyCopyrightAttribute>().Copyright;
+            Product = ReflectionHelper.GetAssemblyAttribute<AssemblyProductAttribute>().Product;
         }
 
         public static ProgramInfo Default
@@ -31,37 +31,5 @@
         public string Copyright { get; private set; }
 
         public string Product { get; private set; }
-
-
-        public override string ToString()
-        {
-            return $"{Title} {Version}" + Environment.NewLine;
-        }
-
-        public static implicit operator string(ProgramInfo headerText)
-        {
-            return headerText.ToString();
-        }
-
-
-        private static string GetAssemblyName()
-        {
-            return ReflectionHelper.GetAssembly().GetName().Name;
-        }
-
-        private static string GetAssemblyVersion()
-        {
-            return ReflectionHelper.GetAssembly().GetName().Version.ToString();
-        }
-
-        private static string GetAssemblyCopyright()
-        {
-            return ReflectionHelper.GetAssemblyAttribute<AssemblyCopyrightAttribute>().Copyright;
-        }
-
-        private static string GetAssemblyProduct()
-        {
-            return ReflectionHelper.GetAssemblyAttribute<AssemblyProductAttribute>().Product;
-        }
     }
 }
