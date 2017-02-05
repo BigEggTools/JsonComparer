@@ -2,12 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
 
     internal static class StringExtensions
     {
-        public static string JoinNewLine(this IEnumerable<string> lines)
+        public static string JoinNewLine(this IEnumerable<StringBuilder> builders)
         {
-            return string.Join(Environment.NewLine, lines);
+            return string.Join(Environment.NewLine, builders);
         }
     }
 }
