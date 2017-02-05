@@ -9,6 +9,7 @@
         private const string VERSION_REPLACER = "|VERSION|";
         private const string PRODUCT_REPLACER = "|PRODUCT|";
         private const string COPYRIGHT_REPLACER = "|COPYRIGHT|";
+        private string[] formatStrings;
 
         public VersionInfo()
         {
@@ -21,8 +22,6 @@
                     $"Program Copyright: {INDEX_START_STRING}{COPYRIGHT_REPLACER}",
             };
         }
-
-        protected string[] formatStrings { get; private set; }
 
         public string Format(string name, string version, string product, string copyright, int maximumDisplayWidth)
         {
