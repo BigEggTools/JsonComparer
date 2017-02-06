@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using BigEgg.ConsoleExtension.Parameters.Utils;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,19 +12,23 @@
         [TestMethod]
         public void JoinNewLineTest()
         {
-            var builder1 = new StringBuilder();
-            builder1.AppendLine("  asdf1234");
-            builder1.Append("asdf1234");
+            var message1 = $"  asdf1234{Environment.NewLine}asdf1234";
+            var message2 = $"  asdf1234{Environment.NewLine}asdf1234{Environment.NewLine}";
+            var message3 = $"";
+            var message4 = $"  asdf1234";
 
-            var builder2 = new StringBuilder();
+            var messages = new List<string>() { message1, message2, message3, message4 };
+            var result = messages.Join();
 
-            var builder3 = new StringBuilder();
-            builder3.AppendLine("  asdf1234");
-
-            var builderArray = new List<StringBuilder>() { builder1, builder2, builder3 };
-            var result = builderArray.JoinNewLine();
-
-            var expect = $"  asdf1234{Environment.NewLine}asdf1234{Environment.NewLine}{Environment.NewLine}  asdf1234{Environment.NewLine}";
+            var expect = string.Join(Environment.NewLine, new List<string>() {
+                "  asdf1234",
+                "asdf1234",
+                "  asdf1234",
+                "asdf1234",
+                "",
+                "  asdf1234",
+                ""
+            });
             Assert.AreEqual(expect, result);
         }
     }

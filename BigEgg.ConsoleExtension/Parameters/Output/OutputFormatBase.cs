@@ -17,11 +17,11 @@
             {
                 var replaceItem = args.Where(arg => line.Contains(arg.Item1)).ToList();
                 return ConcatWithWidth(line, replaceItem, maximumDisplayWidth);
-            }).JoinNewLine();
+            }).Join() + Environment.NewLine;
         }
 
 
-        private StringBuilder ConcatWithWidth(string format, List<Tuple<string, string>> args, int maximumDisplayWidth)
+        private string ConcatWithWidth(string format, List<Tuple<string, string>> args, int maximumDisplayWidth)
         {
             var result = format;
 
@@ -63,7 +63,7 @@
                 }
             }
 
-            return stringBuilder;
+            return stringBuilder.ToString();
         }
     }
 }
