@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Parameters\Output\TextBuilderTest.cs" />
     <Compile Include="Parameters\ParserSettingsTest.cs" />
+    <Compile Include="Parameters\Utils\StringExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
