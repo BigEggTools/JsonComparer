@@ -17,7 +17,7 @@
             {
                 var replaceItem = args.Where(arg => line.Contains(arg.Item1)).ToList();
                 return ConcatWithWidth(line, replaceItem, maximumDisplayWidth);
-            }).Join() + Environment.NewLine;
+            }).Join();
         }
 
 
