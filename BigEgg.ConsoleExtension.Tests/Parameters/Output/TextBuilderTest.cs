@@ -1,4 +1,4 @@
-﻿namespace BigEgg.ConsoleExtesnion.Tests.Parameters.Output
+﻿namespace BigEgg.ConsoleExtension.Tests.Parameters.Output
 {
     using System;
     using System.Collections.Generic;
