@@ -54,6 +54,13 @@
     <Compile Include="Parameters\FakeParameters\EmptyClass.cs" />
     <Compile Include="Parameters\Output\TextBuilderTest.cs" />
     <Compile Include="Parameters\ParserSettingsTest.cs" />
+    <Compile Include="Parameters\Tokens\PropertyTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\UnknownTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\CommandTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\FlagTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\VersionTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\HelpTokenTest.cs" />
+    <Compile Include="Parameters\Tokens\TokenizerTest.cs" />
     <Compile Include="Parameters\Utils\ReflectionHelperTest.cs" />
     <Compile Include="Parameters\Utils\StringExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
