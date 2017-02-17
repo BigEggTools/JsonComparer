@@ -1,4 +1,4 @@
-version: 0.1.{build}
+version: 1.0.0.{build}
 branches:
   only:
   - master
@@ -9,9 +9,8 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
-nuget:
-  disable_publish_on_pr: true
 before_build:
 - cmd: nuget restore
 build:
+  publish_nuget: true
   verbosity: minimal

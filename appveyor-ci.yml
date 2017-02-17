@@ -1,0 +1,9 @@
+version: CI.{build}-{branch}
+branches:
+  except:
+  - master
+configuration: Release
+before_build:
+- cmd: nuget restore
+build:
+  verbosity: minimal
