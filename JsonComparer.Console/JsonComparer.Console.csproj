@@ -36,7 +36,12 @@
     <StartupObject>BigEgg.Tools.JsonComparer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BigEgg.Tools.ConsoleExtension, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.Tools.ConsoleExtension.1.0.3\lib\net452\BigEgg.Tools.ConsoleExtension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
@@ -47,12 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BigEgg.ConsoleExtension\BigEgg.ConsoleExtension.csproj">
-      <Project>{664ce9b8-05cd-4117-993b-d918c056f630}</Project>
-      <Name>BigEgg.ConsoleExtension</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
       <Project>{0929c18d-1691-4846-b63e-038bc8336ffa}</Project>
       <Name>JsonComparer.Core</Name>

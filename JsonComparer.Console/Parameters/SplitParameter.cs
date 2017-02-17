@@ -1,6 +1,6 @@
 ﻿namespace BigEgg.Tools.JsonComparer.Parameters
 {
-    using BigEgg.ConsoleExtension.Parameters;
+    using BigEgg.Tools.ConsoleExtension.Parameters;
 
     [Command("split", "Split the big JSON file to multiple small files.")]
     public class SplitParameter
