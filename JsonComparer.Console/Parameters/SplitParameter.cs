@@ -14,7 +14,7 @@
         [StringProperty("node_name", "n", "The name of node to split.", Required = true)]
         public string NodeName { get; set; }
 
-        [StringProperty("output_pattern", "op", "The output file name pattern. Use '${name}' for node name, ${index} for the child index.")]
+        [StringProperty("output_pattern", "op", "The output file name pattern. Use '${name}' for node name, '${index}' for the child index.")]
         public string OutputFileNamePattern { get; set; }
     }
 }
