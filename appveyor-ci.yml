@@ -2,6 +2,10 @@ version: CI.{build}-{branch}
 branches:
   except:
   - master
+skip_tags: true
+skip_commits:
+  files:
+    - '**/*.md'
 configuration: Release
 before_build:
 - cmd: nuget restore
