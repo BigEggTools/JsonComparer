@@ -46,6 +46,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentHandlers\IArgumentHandler.cs" />
+    <Compile Include="ArgumentHandlers\SplitFileHandler.cs" />
     <Compile Include="Parameters\SplitParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +60,10 @@
     <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
       <Project>{0929c18d-1691-4846-b63e-038bc8336ffa}</Project>
       <Name>JsonComparer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JsonComparer.Services\JsonComparer.Services.csproj">
+      <Project>{fe0618c8-4fa5-43a3-9148-40a4ed08efd2}</Project>
+      <Name>JsonComparer.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

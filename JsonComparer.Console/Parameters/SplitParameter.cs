@@ -10,5 +10,11 @@
 
         [StringProperty("output", "o", "The path to store the splited JSON files.", Required = true)]
         public string OutputPath { get; set; }
+
+        [StringProperty("node_name", "n", "The name of node to split.", Required = true)]
+        public string NodeName { get; set; }
+
+        [StringProperty("output_pattern", "op", "The output file name pattern. Use '${name}' for node name, ${index} for the child index.")]
+        public string OutputFileNamePattern { get; set; }
     }
 }

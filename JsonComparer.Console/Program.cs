@@ -1,12 +1,16 @@
 ﻿namespace BigEgg.Tools.JsonComparer
 {
+    using System;
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
+    using System.Linq;
     using System.Reflection;
 
     using BigEgg.Tools.ConsoleExtension.Parameters;
 
     using BigEgg.Tools.JsonComparer.Parameters;
+    using BigEgg.Tools.JsonComparer.Services;
+    using BigEgg.Tools.JsonComparer.ArgumentHandlers;
 
     public class Program
     {
@@ -17,18 +21,27 @@
         {
             Initialize();
 
-            var parameter = new Parser(container, ParserSettings.Builder().WithDefault().ComputeDisplayWidth().Build()).Parse(args, typeof(SplitParameter));
+            var parameter = new Parser(
+                    container,
+                    ParserSettings.Builder().WithDefault().CaseSensitive(false).ComputeDisplayWidth().Build())
+                .Parse(args, typeof(SplitParameter));
             if (parameter == null) { return; }
+
+            var handlers = container.GetExportedValues<IArgumentHandler>();
+            var handler = handlers.First(h => h.CanHandle(parameter));
+
+            Console.Write("Find Handle to Handle this Parameter.");
+            handler.Handle(parameter).Wait();
+            Console.Write("Done.");
         }
 
 
         private static void Initialize()
         {
             catalog = new AggregateCatalog();
-            // Add the Framework assembly to the catalog
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Parser).Assembly));
-            // Add the Bugger.Presentation assembly to the catalog
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(IDocumentActionService).Assembly));
 
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();
