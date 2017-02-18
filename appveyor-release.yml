@@ -22,11 +22,12 @@ build:
 artifacts:
   - path: JsonComparer.Console\bin\$(configuration)\app.publish
     name: JsonComparer.Console.ClickOnce
-- provider: GitHub
-  auth_token:
-    secure: iXRTi0GXb0J+zxsiM3IBHjvGzHpn8Ml0bJSfjGrm/XQaL0LFb3RIKWEK/5j780/9
-  artifact: JsonComparer.Console.ClickOnce
-  draft: true
-  force_update: true
-  on:
-    branch: master
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: iXRTi0GXb0J+zxsiM3IBHjvGzHpn8Ml0bJSfjGrm/XQaL0LFb3RIKWEK/5j780/9
+    artifact: JsonComparer.Console.ClickOnce
+    draft: true
+    force_update: true
+    on:
+      branch: master
