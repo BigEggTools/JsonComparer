@@ -9,6 +9,7 @@
     using Newtonsoft.Json.Linq;
 
     using BigEgg.Tools.JsonComparer.Progress;
+    using BigEgg.Tools.JsonComparer.Services.Json;
 
     public class DocumentActionServiceTest
     {

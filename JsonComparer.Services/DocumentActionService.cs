@@ -10,6 +10,7 @@
     using Newtonsoft.Json.Linq;
 
     using BigEgg.Tools.JsonComparer.Progress;
+    using BigEgg.Tools.JsonComparer.Services.Json;
 
     /// <summary>
     /// The logic for split JSON file or merge JSON files.
@@ -127,7 +128,6 @@
         }
 
 
-
         private Task SplitObject(JObject node, string outputPath, string outputFileNamePattern, string nodeName, IProgress<IProgressReport> progress)
         {
             if (string.IsNullOrWhiteSpace(outputFileNamePattern)) { outputFileNamePattern = Constants.SPLIT_OUTPUT_FILE_NAME_REPLACER_NAME; }
@@ -165,7 +165,7 @@
             return Task.Factory.StartNew(() =>
             {
                 Trace.Indent();
-                Trace.TraceInformation($"Start splitting properties in '{nodeName}' node");
+                Trace.TraceInformation($"Start splitting array items in '{nodeName}' node");
 
                 var children = node.Children().ToList();
                 var length = children.Count;

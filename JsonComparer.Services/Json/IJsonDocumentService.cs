@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services
+﻿namespace BigEgg.Tools.JsonComparer.Services.Json
 {
     using System;
 

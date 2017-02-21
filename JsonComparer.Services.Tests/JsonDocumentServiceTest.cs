@@ -7,7 +7,7 @@
 
     using Newtonsoft.Json.Linq;
 
-    using BigEgg.Tools.JsonComparer.Services;
+    using BigEgg.Tools.JsonComparer.Services.Json;
 
     public class JsonDocumentServiceTest
     {

@@ -4,6 +4,8 @@
     using System.ComponentModel.Composition.Hosting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using BigEgg.Tools.JsonComparer.Services.Json;
+
     [TestClass]
     public class TestClassBase
     {
