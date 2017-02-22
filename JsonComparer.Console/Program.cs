@@ -8,9 +8,9 @@
 
     using BigEgg.Tools.ConsoleExtension.Parameters;
 
-    using BigEgg.Tools.JsonComparer.Parameters;
-    using BigEgg.Tools.JsonComparer.Services;
     using BigEgg.Tools.JsonComparer.ArgumentHandlers;
+    using BigEgg.Tools.JsonComparer.Parameters;
+    using BigEgg.Tools.JsonComparer.Services.FileActions;
 
     public class Program
     {
@@ -41,7 +41,7 @@
             catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Parser).Assembly));
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(IDocumentActionService).Assembly));
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(IFileActionService).Assembly));
 
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();

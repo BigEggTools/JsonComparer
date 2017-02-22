@@ -8,15 +8,15 @@
 
     using BigEgg.Tools.JsonComparer.Parameters;
     using BigEgg.Tools.JsonComparer.Progress;
-    using BigEgg.Tools.JsonComparer.Services;
+    using BigEgg.Tools.JsonComparer.Services.FileActions;
 
     [Export(typeof(IArgumentHandler))]
     public class SplitFileHandler : IArgumentHandler
     {
-        private readonly IDocumentActionService service;
+        private readonly IFileActionService service;
 
         [ImportingConstructor]
-        public SplitFileHandler(IDocumentActionService service)
+        public SplitFileHandler(IFileActionService service)
         {
             this.service = service;
         }

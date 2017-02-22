@@ -5,6 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using BigEgg.Tools.JsonComparer.Services.Json;
+    using BigEgg.Tools.JsonComparer.Services.FileActions;
 
     [TestClass]
     public class TestClassBase
@@ -16,7 +17,7 @@
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(JsonDocumentService), typeof(DocumentActionService)
+                typeof(JsonDocumentService), typeof(FileActionActionService)
             ));
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();

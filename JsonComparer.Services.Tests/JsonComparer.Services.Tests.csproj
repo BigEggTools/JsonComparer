@@ -55,8 +55,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DocumentActionServiceTest.cs" />
-    <Compile Include="JsonDocumentServiceTest.cs" />
+    <Compile Include="FileActions\FileActionServiceTest.cs" />
+    <Compile Include="Json\JsonDocumentServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClassBase.cs" />
   </ItemGroup>

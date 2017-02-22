@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services
+﻿namespace BigEgg.Tools.JsonComparer.Services.FileActions
 {
     using System;
     using System.Threading.Tasks;
@@ -8,7 +8,7 @@
     /// <summary>
     /// The logic for split JSON file or merge JSON files.
     /// </summary>
-    public interface IDocumentActionService
+    public interface IFileActionService
     {
         /// <summary>
         /// Splits the file.

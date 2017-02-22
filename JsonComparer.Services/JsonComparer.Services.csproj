@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="DocumentActionService.cs" />
-    <Compile Include="IDocumentActionService.cs" />
+    <Compile Include="FileActions\FileActionActionService.cs" />
+    <Compile Include="FileActions\IFileActionService.cs" />
     <Compile Include="Json\IJsonDocumentService.cs" />
     <Compile Include="Json\JsonDocumentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

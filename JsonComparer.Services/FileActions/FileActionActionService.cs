@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services
+﻿namespace BigEgg.Tools.JsonComparer.Services.FileActions
 {
     using System;
     using System.ComponentModel.Composition;
@@ -15,17 +15,17 @@
     /// <summary>
     /// The logic for split JSON file or merge JSON files.
     /// </summary>
-    [Export(typeof(IDocumentActionService))]
-    public class DocumentActionService : IDocumentActionService
+    [Export(typeof(IFileActionService))]
+    public class FileActionActionService : IFileActionService
     {
         private readonly IJsonDocumentService jsonDocumentService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentActionService"/> class.
+        /// Initializes a new instance of the <see cref="FileActionActionService"/> class.
         /// </summary>
         /// <param name="jsonDocumentService">The json document service.</param>
         [ImportingConstructor]
-        public DocumentActionService(IJsonDocumentService jsonDocumentService)
+        public FileActionActionService(IJsonDocumentService jsonDocumentService)
         {
             this.jsonDocumentService = jsonDocumentService;
         }

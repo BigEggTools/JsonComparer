@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services.Tests
+﻿namespace BigEgg.Tools.JsonComparer.Services.Tests.FileActions
 {
     using System;
     using System.IO;
@@ -10,8 +10,9 @@
 
     using BigEgg.Tools.JsonComparer.Progress;
     using BigEgg.Tools.JsonComparer.Services.Json;
+    using BigEgg.Tools.JsonComparer.Services.FileActions;
 
-    public class DocumentActionServiceTest
+    public class FileActionServiceTest
     {
         [TestClass]
         public class SplitTest : TestClassBase
@@ -37,7 +38,7 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task FileName_Null()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(null, OUTPUT_PATH, DATA_NODE_NAME);
             }
 
@@ -45,7 +46,7 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task FileName_EmptyString()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(string.Empty, OUTPUT_PATH, DATA_NODE_NAME);
             }
 
@@ -53,7 +54,7 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task OutputPath_Null()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, null, DATA_NODE_NAME);
             }
 
@@ -61,7 +62,7 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task OutputPath_EmptyString()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, string.Empty, DATA_NODE_NAME);
             }
 
@@ -69,7 +70,7 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task NodeName_Null()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, null);
             }
 
@@ -77,14 +78,14 @@
             [ExpectedException(typeof(ArgumentException))]
             public async Task NodeName_EmptyString()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, string.Empty);
             }
 
             [TestMethod]
             public async Task SplitObjectInObject()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, DATA_NODE_NAME);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\BigEgg.json"));
@@ -102,7 +103,7 @@
             [TestMethod]
             public async Task SplitObjectInArray()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, ARRAY_NODE_NAME);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\1.json"));
@@ -121,14 +122,14 @@
             [ExpectedException(typeof(NotSupportedException))]
             public async Task SplitValue()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, VERSION_NODE_NAME);
             }
 
             [TestMethod]
             public async Task SplitValueInObject()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, STATUS_NODE_NAME);
 
                 Assert.AreEqual(0, Directory.EnumerateFiles(OUTPUT_PATH).Count());
@@ -137,7 +138,7 @@
             [TestMethod]
             public async Task SplitValueInArray()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, STATUS_NODE_NAME);
 
                 Assert.AreEqual(0, Directory.EnumerateFiles(OUTPUT_PATH).Count());
@@ -146,7 +147,7 @@
             [TestMethod]
             public async Task SplitObjectInObject_WithFileNamePattern()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, DATA_NODE_NAME, OutputFileNamePattern);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name_BigEgg_1.json"));
@@ -164,7 +165,7 @@
             [TestMethod]
             public async Task SplitObjectInArray_WithFileNamePattern()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, ARRAY_NODE_NAME, OutputFileNamePattern);
 
                 Assert.IsTrue(File.Exists($"{OUTPUT_PATH}\\name__1.json"));
@@ -184,7 +185,7 @@
             [TestMethod]
             public async Task SplitObjectInObject_WithProgress()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
@@ -210,7 +211,7 @@
             [TestMethod]
             public async Task SplitObjectInArray_WithProgress()
             {
-                var service = Container.GetExportedValue<IDocumentActionService>();
+                var service = Container.GetExportedValue<IFileActionService>();
                 calledCount_SplitObjectInArray = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
