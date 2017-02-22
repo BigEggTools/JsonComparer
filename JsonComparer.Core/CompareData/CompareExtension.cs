@@ -36,8 +36,8 @@
             if (!property1.Name.Equals(property2.Name, StringComparison.InvariantCulture)) { throw new NotSupportedException(""); }
 
             return new CompareItem(property1.Name,
-                property1.Select(item => item.Value.ToCompare()).ToList(),
-                property2.Select(item => item.Value.ToCompare()).ToList());
+                property1.Select(item => item.Value.ToCompare(replaceValue)).ToList(),
+                property2.Select(item => item.Value.ToCompare(replaceValue)).ToList());
         }
 
         /// <summary>
@@ -49,7 +49,7 @@
         public static CompareItem ToCompareForOld(this Property property, Func<string, string> replaceValue)
         {
             return new CompareItem(property.Name,
-                property.Select(item => item.Value.ToCompare()).ToList(),
+                property.Select(item => item.Value.ToCompare(replaceValue)).ToList(),
                 null);
         }
 
@@ -63,7 +63,7 @@
         {
             return new CompareItem(property.Name,
                 null,
-                property.Select(item => item.Value.ToCompare()).ToList());
+                property.Select(item => item.Value.ToCompare(replaceValue)).ToList());
         }
     }
 }
