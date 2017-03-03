@@ -1,0 +1,24 @@
+﻿{
+  "startNodeName": "_document",
+  "propertyNodesName": [
+    "properties",
+    "fields"
+  ],
+  "fieldInfos": [
+    {
+      "fieldType": "String",
+      "defaultValue": "default"
+    },
+    {
+      "fieldName": "include_in_all",
+      "fieldType": "Boolean",
+      "defaultValue": false,
+      "replaceValue": "default"
+    },
+    {
+      "fieldName": "analyzer",
+      "fieldType": "String",
+      "defaultValue": "default"
+    }
+  ]
+}

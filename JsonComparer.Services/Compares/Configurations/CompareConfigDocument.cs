@@ -14,14 +14,19 @@
         {
             if (string.IsNullOrWhiteSpace(fileName)) { throw new ArgumentException("fileName"); }
 
+            CompareConfig config = null;
+
             var extension = Path.GetExtension(fileName);
             switch (extension)
             {
                 case ".json":
-                    return ReadFromJson(fileName);
+                    config = ReadFromJson(fileName);
+                    break;
             }
 
-            return null;
+
+
+            return config;
         }
 
 
@@ -33,7 +38,12 @@
             using (StreamReader sr = new StreamReader(fileName))
             {
                 var jsonString = sr.ReadToEnd();
-                var settings = new JsonSerializerSettings { ContractResolver = new PrivateSetterCamelCasePropertyNamesContractResolver() };
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Include,
+                    MissingMemberHandling = MissingMemberHandling.Error,
+                    ContractResolver = new PrivateSetterCamelCasePropertyNamesContractResolver()
+                };
                 var config = JsonConvert.DeserializeObject<CompareConfig>(jsonString, settings);
 
                 Trace.TraceWarning(config == null

@@ -9,7 +9,8 @@
 
     public class CompareConfigDocumentTest
     {
-        private const string JSON_CONFIG_FILE = "TestData\\Compares\\Configurations\\config.json";
+        private const string JSON_CONFIG_FILE = "TestData\\Compares\\Configurations\\json\\config.json";
+        private const string JSON_CONFIG_FILE_INVALID_FOLDER = "TestData\\Compares\\Configurations\\json\\invalid";
         private const string OTHER_CONFIG_FILE = "TestData\\Compares\\Configurations\\config.other";
 
         [TestClass]
@@ -56,6 +57,19 @@
                 Assert.AreEqual(FieldType.Boolean, result.FieldInfos[1].FieldType);
                 Assert.AreEqual(false, result.FieldInfos[1].DefaultValue);
                 Assert.AreEqual("default", result.FieldInfos[1].ReplaceValue);
+            }
+
+            [TestMethod]
+            public void InvalidConfig()
+            {
+                var service = Container.GetExportedValue<ICompareConfigDocument>();
+
+                var files = Directory.EnumerateFiles(JSON_CONFIG_FILE_INVALID_FOLDER);
+                foreach (var file in files)
+                {
+                    var result = service.ReadFromFile(file);
+                    Assert.IsNull(result, $"failed on test data: {file}");
+                }
             }
         }
 
