@@ -42,6 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compares\CompareExtension.cs" />
+    <Compile Include="Compares\Configurations\CompareConfig.cs" />
+    <Compile Include="Compares\Configurations\CompareConfigDocument.cs" />
+    <Compile Include="Compares\Configurations\CompareFieldConfig.cs" />
+    <Compile Include="Compares\Configurations\ICompareConfigDocument.cs" />
+    <Compile Include="Compares\Configurations\PrivateSetterCamelCasePropertyNamesContractResolver.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="FileActions\FileActionActionService.cs" />
     <Compile Include="FileActions\IFileActionService.cs" />

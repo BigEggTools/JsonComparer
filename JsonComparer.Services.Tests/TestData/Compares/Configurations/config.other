@@ -1,0 +1,25 @@
+﻿{
+  "startNodeName": "_document",
+  "propertyNodesName": [
+    "properties",
+    "fields"
+  ],
+  "fieldInfos": [
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "defaultValue": "default"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "defaultValue": false,
+      "replaceValue": "default"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "defaultValue": "default"
+    }
+  ]
+}
