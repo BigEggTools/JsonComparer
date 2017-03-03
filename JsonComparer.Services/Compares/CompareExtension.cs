@@ -1,14 +1,15 @@
-﻿namespace BigEgg.Tools.JsonComparer.CompareData
+﻿namespace BigEgg.Tools.JsonComparer.Services.Compare
 {
     using System;
     using System.Linq;
 
+    using BigEgg.Tools.JsonComparer.CompareData;
     using BigEgg.Tools.JsonComparer.JsonDocument;
 
     /// <summary>
     /// The extension class for compare data model
     /// </summary>
-    public static class CompareExtension
+    internal static class CompareExtension
     {
         /// <summary>
         /// To the compare value model.

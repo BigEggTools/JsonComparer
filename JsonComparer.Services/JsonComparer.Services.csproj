@@ -41,6 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compares\CompareExtension.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="FileActions\FileActionActionService.cs" />
     <Compile Include="FileActions\IFileActionService.cs" />

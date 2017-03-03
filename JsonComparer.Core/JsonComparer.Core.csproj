@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="CompareData\CompareValue.cs" />
     <Compile Include="CompareData\CompareItem.cs" />
-    <Compile Include="CompareData\CompareExtension.cs" />
     <Compile Include="JsonDocument\DefaultField.cs" />
     <Compile Include="JsonDocument\JsonDocument.cs" />
     <Compile Include="JsonDocument\Field.cs" />
