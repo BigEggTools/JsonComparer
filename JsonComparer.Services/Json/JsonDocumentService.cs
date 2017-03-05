@@ -26,7 +26,7 @@
         /// <exception cref="System.IO.IOException">Path includes an incorrect or invalid syntax for file name, directory name, or volume label.</exception>
         public JToken ReadJsonFile(string path)
         {
-            if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
+            Preconditions.NotNullOrWhiteSpace(path, "path");
 
             Trace.Indent();
             Trace.TraceInformation($"Start to read data in file {path}");
@@ -63,8 +63,8 @@
         /// <exception cref="System.Security.SecurityException">The caller does not have the required permission.</exception>
         public void WriteJsonFile(JToken data, string path)
         {
-            if (data == null) { throw new ArgumentNullException("data"); }
-            if (string.IsNullOrWhiteSpace(path)) { throw new ArgumentException("path"); }
+            Preconditions.NotNull(data, "data");
+            Preconditions.NotNullOrWhiteSpace(path, "path");
 
             Trace.Indent();
             Trace.TraceInformation($"Start to write data to file {path}");
@@ -99,8 +99,8 @@
         /// <exception cref="System.ArgumentException">NodeName is null or empty string.</exception>
         public JToken GetNode(JToken jsonObject, string nodeName, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
         {
-            if (jsonObject == null) { throw new ArgumentNullException("jsonObject"); }
-            if (string.IsNullOrWhiteSpace(nodeName)) { throw new ArgumentException("nodeName"); }
+            Preconditions.NotNull(jsonObject, "jsonObject");
+            Preconditions.NotNullOrWhiteSpace(nodeName, "nodeName");
 
             Trace.Indent();
             Trace.TraceInformation($"Start Finding '{nodeName}' node");

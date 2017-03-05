@@ -7,8 +7,9 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Newtonsoft.Json.Linq;
+    using BigEgg.Progress;
+    using BigEgg.UnitTesting;
 
-    using BigEgg.Tools.JsonComparer.Progress;
     using BigEgg.Tools.JsonComparer.Services.Json;
     using BigEgg.Tools.JsonComparer.Services.FileActions;
 
@@ -35,51 +36,31 @@
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task FileName_Null()
+            public async Task FileName_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(null, OUTPUT_PATH, DATA_NODE_NAME);
+
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(null, OUTPUT_PATH, DATA_NODE_NAME));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(string.Empty, OUTPUT_PATH, DATA_NODE_NAME));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile("   ", OUTPUT_PATH, DATA_NODE_NAME));
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task FileName_EmptyString()
+            public async Task OutputPath_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(string.Empty, OUTPUT_PATH, DATA_NODE_NAME);
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, null, DATA_NODE_NAME));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, string.Empty, DATA_NODE_NAME));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, "    ", DATA_NODE_NAME));
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task OutputPath_Null()
+            public async Task NodeName_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(TEST_JSON_FILE, null, DATA_NODE_NAME);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task OutputPath_EmptyString()
-            {
-                var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(TEST_JSON_FILE, string.Empty, DATA_NODE_NAME);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task NodeName_Null()
-            {
-                var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, null);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public async Task NodeName_EmptyString()
-            {
-                var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, string.Empty);
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, null));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, string.Empty));
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(() => service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, "    "));
             }
 
             [TestMethod]
@@ -180,17 +161,15 @@
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }
 
-            private static int calledCount_SplitObjectInObject = 0;
-
             [TestMethod]
             public async Task SplitObjectInObject_WithProgress()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                calledCount_SplitObjectInObject = 0;
+                var calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
                     Assert.AreEqual(2, report.Total);
-                    Assert.AreEqual(calledCount_SplitObjectInObject, report.Current);
+                    Assert.AreEqual(calledCount_SplitObjectInObject++, report.Current);
                 });
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, DATA_NODE_NAME, progress);
 
@@ -206,17 +185,15 @@
                 Assert.AreEqual(31L, ((JValue)valueNode).Value);
             }
 
-            private static int calledCount_SplitObjectInArray = 0;
-
             [TestMethod]
             public async Task SplitObjectInArray_WithProgress()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                calledCount_SplitObjectInArray = 0;
+                var calledCount_SplitObjectInArray = 0;
                 var progress = new Progress<IProgressReport>(report =>
                 {
                     Assert.AreEqual(2, report.Total);
-                    Assert.AreEqual(calledCount_SplitObjectInArray, report.Current);
+                    Assert.AreEqual(calledCount_SplitObjectInArray++, report.Current);
                 });
                 await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, ARRAY_NODE_NAME, progress);
 

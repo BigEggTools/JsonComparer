@@ -6,6 +6,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Newtonsoft.Json.Linq;
+    using BigEgg.UnitTesting;
 
     using BigEgg.Tools.JsonComparer.Services.Json;
 
@@ -17,19 +18,12 @@
         public class ReadJsonFileTest : TestClassBase
         {
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_Null()
+            public void Path_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
-                var result = service.ReadJsonFile(null);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_EmptyString()
-            {
-                var service = Container.GetExportedValue<IJsonDocumentService>();
-                var result = service.ReadJsonFile(string.Empty);
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadJsonFile(null));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadJsonFile(string.Empty));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadJsonFile("    "));
             }
 
             [TestMethod]
@@ -63,31 +57,21 @@
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentNullException))]
-            public void Data_Null()
+            public void Data_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
-                service.WriteJsonFile(null, NEW_FILE_PATH);
+                AssertHelper.ExpectedException<ArgumentNullException>(() => service.WriteJsonFile(null, NEW_FILE_PATH));
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_Null()
+            public void Path_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
-                service.WriteJsonFile(jsonObject, null);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_Empty()
-            {
-                var service = Container.GetExportedValue<IJsonDocumentService>();
-                var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
-
-                service.WriteJsonFile(jsonObject, string.Empty);
+                AssertHelper.ExpectedException<ArgumentException>(() => service.WriteJsonFile(jsonObject, null));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.WriteJsonFile(jsonObject, string.Empty));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.WriteJsonFile(jsonObject, "    "));
             }
 
             [TestMethod]
@@ -128,31 +112,21 @@
             private const string STATUS_PROGESS_NODE_NAME = "progress";
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentNullException))]
-            public void Data_Null()
+            public void Data_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
-                service.GetNode(null, DATA_NODE_NAME);
+                AssertHelper.ExpectedException<ArgumentNullException>(() => service.GetNode(null, DATA_NODE_NAME));
             }
 
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
             public void NodeName_Null()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
                 var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
 
-                var result = service.GetNode(jsonObject, null);
-            }
-
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void NodeName_EmptyString()
-            {
-                var service = Container.GetExportedValue<IJsonDocumentService>();
-                var jsonObject = service.ReadJsonFile(TEST_JSON_FILE);
-
-                var result = service.GetNode(jsonObject, string.Empty);
+                AssertHelper.ExpectedException<ArgumentException>(() => service.GetNode(jsonObject, null));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.GetNode(jsonObject, string.Empty));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.GetNode(jsonObject, "    "));
             }
 
             [TestMethod]

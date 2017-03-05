@@ -4,10 +4,10 @@
     using System.ComponentModel.Composition;
     using System.Threading.Tasks;
 
+    using BigEgg.Progress;
     using BigEgg.Tools.ConsoleExtension.ProgressBar;
 
     using BigEgg.Tools.JsonComparer.Parameters;
-    using BigEgg.Tools.JsonComparer.Progress;
     using BigEgg.Tools.JsonComparer.Services.FileActions;
 
     [Export(typeof(IArgumentHandler))]

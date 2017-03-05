@@ -35,12 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BigEgg.Core, Version=2.1.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.Core.2.1.0.3\lib\net452\BigEgg.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BigEgg.UnitTesting, Version=2.1.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.UnitTesting.2.1.0.3\lib\net452\BigEgg.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">

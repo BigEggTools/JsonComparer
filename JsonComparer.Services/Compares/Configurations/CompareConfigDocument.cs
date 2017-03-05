@@ -1,6 +1,5 @@
 ﻿namespace BigEgg.Tools.JsonComparer.Services.Compares.Configurations
 {
-    using System;
     using System.ComponentModel.Composition;
     using System.Diagnostics;
     using System.IO;
@@ -12,10 +11,9 @@
     {
         public CompareConfig ReadFromFile(string fileName)
         {
-            if (string.IsNullOrWhiteSpace(fileName)) { throw new ArgumentException("fileName"); }
+            Preconditions.NotNullOrWhiteSpace(fileName, "fileName");
 
             CompareConfig config = null;
-
             var extension = Path.GetExtension(fileName);
             switch (extension)
             {
@@ -23,8 +21,6 @@
                     config = ReadFromJson(fileName);
                     break;
             }
-
-
 
             return config;
         }

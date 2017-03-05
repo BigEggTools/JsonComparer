@@ -4,6 +4,8 @@
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using BigEgg.UnitTesting;
+
     using BigEgg.Tools.JsonComparer.JsonDocument;
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
 
@@ -17,19 +19,13 @@
         public class ReadFromJson : TestClassBase
         {
             [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_Null()
+            public void Path_PreconditionCheck()
             {
                 var service = Container.GetExportedValue<ICompareConfigDocument>();
-                service.ReadFromFile(null);
-            }
 
-            [TestMethod]
-            [ExpectedException(typeof(ArgumentException))]
-            public void Path_EmptyString()
-            {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
-                service.ReadFromFile(string.Empty);
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile(null));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile(string.Empty));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile("    "));
             }
 
             [TestMethod]

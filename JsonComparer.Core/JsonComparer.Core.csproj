@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
@@ -45,8 +46,6 @@
     <Compile Include="JsonDocument\Field.cs" />
     <Compile Include="JsonDocument\FieldType.cs" />
     <Compile Include="JsonDocument\Property.cs" />
-    <Compile Include="Progress\IProgressReport.cs" />
-    <Compile Include="Progress\ProgressReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

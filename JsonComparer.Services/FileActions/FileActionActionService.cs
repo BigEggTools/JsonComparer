@@ -8,8 +8,8 @@
     using System.Threading.Tasks;
 
     using Newtonsoft.Json.Linq;
+    using BigEgg.Progress;
 
-    using BigEgg.Tools.JsonComparer.Progress;
     using BigEgg.Tools.JsonComparer.Services.Json;
 
     /// <summary>
@@ -98,9 +98,9 @@
         /// </exception>
         public async Task SplitFile(string fileName, string outputPath, string nodeName, string outputFileNamePattern, IProgress<IProgressReport> progress = null)
         {
-            if (string.IsNullOrWhiteSpace(fileName)) { throw new ArgumentException("fileName"); }
-            if (string.IsNullOrWhiteSpace(outputPath)) { throw new ArgumentException("outputPath"); }
-            if (string.IsNullOrWhiteSpace(nodeName)) { throw new ArgumentException("nodeName"); }
+            Preconditions.NotNullOrWhiteSpace(fileName, "fileName");
+            Preconditions.NotNullOrWhiteSpace(outputPath, "outputPath");
+            Preconditions.NotNullOrWhiteSpace(nodeName, "nodeName");
 
             Trace.Indent();
             Trace.TraceInformation($"Start split JSON data in file {fileName}");

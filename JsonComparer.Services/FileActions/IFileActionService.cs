@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    using BigEgg.Tools.JsonComparer.Progress;
+    using BigEgg.Progress;
 
     /// <summary>
     /// The logic for split JSON file or merge JSON files.

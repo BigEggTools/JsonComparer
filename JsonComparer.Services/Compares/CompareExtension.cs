@@ -31,10 +31,13 @@
         /// <param name="property2">The property2.</param>
         /// <param name="replaceValue">The replace value function.</param>
         /// <returns>The compare item model</returns>
+        /// <exception cref="ArgumentNullException">Parameter property2 should not be null.</exception>
+        /// <exception cref="NotSupportedException">Should not compare to property with different name.</exception>
         public static CompareItem ToCompareWithAnother(this Property property1, Property property2, Func<string, string> replaceValue)
         {
-            if (property2 == null) { throw new ArgumentNullException("property2"); }
-            if (!property1.Name.Equals(property2.Name, StringComparison.InvariantCulture)) { throw new NotSupportedException(""); }
+            Preconditions.NotNull(property2, "property2");
+
+            if (!property1.Name.Equals(property2.Name, StringComparison.InvariantCulture)) { throw new NotSupportedException("Should not compare to property with different name."); }
 
             return new CompareItem(property1.Name,
                 property1.Select(item => item.Value.ToCompare(replaceValue)).ToList(),
