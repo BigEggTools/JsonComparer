@@ -3,6 +3,7 @@
     using System.ComponentModel.Composition;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
 
     using Newtonsoft.Json;
 
@@ -22,7 +23,11 @@
                     break;
             }
 
-            return config;
+            return config != null
+                ? config.Validate().Any()
+                    ? null
+                    : config
+                : null;
         }
 
 
@@ -40,14 +45,21 @@
                     MissingMemberHandling = MissingMemberHandling.Error,
                     ContractResolver = new PrivateSetterCamelCasePropertyNamesContractResolver()
                 };
-                var config = JsonConvert.DeserializeObject<CompareConfig>(jsonString, settings);
-
-                Trace.TraceWarning(config == null
-                    ? $"Failed to compare config data from file {fileName}"
-                    : $"End to compare config data from file {fileName}");
-                Trace.Unindent();
-
-                return config;
+                try
+                {
+                    var config = JsonConvert.DeserializeObject<CompareConfig>(jsonString, settings);
+                    Trace.TraceWarning($"End to compare config data from file {fileName}");
+                    return config;
+                }
+                catch (JsonSerializationException ex)
+                {
+                    Trace.TraceWarning($"Failed to compare config data from file {fileName}. Error message: {ex.Message}");
+                    return null;
+                }
+                finally
+                {
+                    Trace.Unindent();
+                }
             }
         }
     }

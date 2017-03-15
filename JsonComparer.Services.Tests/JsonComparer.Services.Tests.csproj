@@ -35,12 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BigEgg.Core, Version=2.1.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BigEgg.Core.2.1.0.3\lib\net452\BigEgg.Core.dll</HintPath>
+    <Reference Include="BigEgg.Core, Version=2.1.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.Core.2.1.0.4\lib\net452\BigEgg.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BigEgg.UnitTesting, Version=2.1.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BigEgg.UnitTesting.2.1.0.3\lib\net452\BigEgg.UnitTesting.dll</HintPath>
+    <Reference Include="BigEgg.UnitTesting, Version=2.1.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.UnitTesting.2.1.0.4\lib\net452\BigEgg.UnitTesting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
