@@ -64,7 +64,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Compares\Configurations\CompareConfigDocumentTest.cs" />
+    <Compile Include="Compares\Configurations\CompareConfigDocumentTypeTest.cs" />
     <Compile Include="FileActions\FileActionServiceTest.cs" />
     <Compile Include="Json\JsonDocumentServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,13 +106,19 @@
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_04.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_07.json">
+    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_05.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Compares\Configurations\json\config_1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_06.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_05.json">
+    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_07.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_09.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_08.json">
@@ -121,13 +127,7 @@
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_10.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_09.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_11.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_12.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\Compares\Configurations\json\invalid\config_invalid_00.json">

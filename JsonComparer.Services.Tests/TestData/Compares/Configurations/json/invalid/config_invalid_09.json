@@ -7,7 +7,6 @@
   "fieldInfos": [
     {
       "fieldName": "type",
-      "fieldType": "",
       "defaultValue": "default"
     },
     {

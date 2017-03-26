@@ -4,23 +4,57 @@
 
     using Newtonsoft.Json;
 
-    using BigEgg.Tools.JsonComparer.JsonDocument;
+    using BigEgg.Tools.JsonComparer.JsonDocuments;
 
-    internal class CompareFieldConfig : ValidatableObject
+    /// <summary>
+    /// The configuration model for compare field
+    /// </summary>
+    /// <seealso cref="BigEgg.ValidatableObject" />
+    public class CompareFieldConfig : ValidatableObject
     {
+        /// <summary>
+        /// Gets the field name.
+        /// </summary>
+        /// <value>
+        /// The the field name.
+        /// </value>
         [JsonProperty(Required = Required.Always)]
         [Required(AllowEmptyStrings = false)]
         public string FieldName { get; private set; }
 
+        /// <summary>
+        /// Gets the field type.
+        /// </summary>
+        /// <value>
+        /// The the field type.
+        /// </value>
         [JsonProperty(Required = Required.Always)]
         public FieldType FieldType { get; private set; }
 
+        /// <summary>
+        /// Gets the default value.
+        /// </summary>
+        /// <value>
+        /// The default value.
+        /// </value>
         [JsonProperty(Required = Required.Always)]
         [Required(AllowEmptyStrings = false)]
         public object DefaultValue { get; private set; }
 
+        /// <summary>
+        /// Gets the replace value.
+        /// </summary>
+        /// <value>
+        /// The replace value.
+        /// </value>
         public object ReplaceValue { get; private set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the value need to check to be replace.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the value need to check to be replace; otherwise, <c>false</c>.
+        /// </value>
         public bool NeedReplace { get { return ReplaceValue != null; } }
     }
 }

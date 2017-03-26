@@ -7,7 +7,8 @@
   "fieldInfos": [
     {
       "fieldName": "type",
-      "defaultValue": "default"
+      "fieldType": "String",
+      "defaultValue": ""
     },
     {
       "fieldName": "include_in_all",

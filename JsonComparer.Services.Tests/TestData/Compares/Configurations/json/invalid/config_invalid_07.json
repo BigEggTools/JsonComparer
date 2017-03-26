@@ -6,7 +6,6 @@
   ],
   "fieldInfos": [
     {
-      "fieldName": "",
       "fieldType": "String",
       "defaultValue": "default"
     },

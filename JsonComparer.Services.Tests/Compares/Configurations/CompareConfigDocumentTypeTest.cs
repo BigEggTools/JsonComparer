@@ -1,4 +1,5 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares.Configurations
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares.Configurations
 {
     using System;
     using System.IO;
@@ -6,12 +7,13 @@
 
     using BigEgg.UnitTesting;
 
-    using BigEgg.Tools.JsonComparer.JsonDocument;
+    using BigEgg.Tools.JsonComparer.JsonDocuments;
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
 
-    public class CompareConfigDocumentTest
+    public class CompareConfigDocumentTypeTest
     {
         private const string JSON_CONFIG_FILE = "TestData\\Compares\\Configurations\\json\\config.json";
+        private const string JSON_CONFIG_FILE_1 = "TestData\\Compares\\Configurations\\json\\config_1.json";
         private const string JSON_CONFIG_FILE_INVALID_FOLDER = "TestData\\Compares\\Configurations\\json\\invalid";
         private const string OTHER_CONFIG_FILE = "TestData\\Compares\\Configurations\\config.other";
 
@@ -21,26 +23,26 @@
             [TestMethod]
             public void Path_PreconditionCheck()
             {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
 
-                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile(null));
-                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile(string.Empty));
-                AssertHelper.ExpectedException<ArgumentException>(() => service.ReadFromFile("    "));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.Read(null));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.Read(string.Empty));
+                AssertHelper.ExpectedException<ArgumentException>(() => service.Read("    "));
             }
 
             [TestMethod]
             [ExpectedException(typeof(FileNotFoundException))]
             public void FileNotExist()
             {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
-                service.ReadFromFile("notExist.json");
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
+                service.Read("notExist.json");
             }
 
             [TestMethod]
             public void ExistFile()
             {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
-                var result = service.ReadFromFile(JSON_CONFIG_FILE);
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
+                var result = service.Read(JSON_CONFIG_FILE);
                 Assert.IsNotNull(result);
 
                 Assert.AreEqual("_document", result.StartNodeName);
@@ -56,14 +58,22 @@
             }
 
             [TestMethod]
+            public void NoFieldInfos_Null()
+            {
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
+                var result = service.Read(JSON_CONFIG_FILE_1);
+                Assert.IsNotNull(result);
+            }
+
+            [TestMethod]
             public void InvalidConfig()
             {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
 
                 var files = Directory.EnumerateFiles(JSON_CONFIG_FILE_INVALID_FOLDER);
                 foreach (var file in files)
                 {
-                    var result = service.ReadFromFile(file);
+                    var result = service.Read(file);
                     Assert.IsNull(result, $"failed on test data: {file}");
                 }
             }
@@ -75,8 +85,8 @@
             [TestMethod]
             public void UnsupportedFileExtension()
             {
-                var service = Container.GetExportedValue<ICompareConfigDocument>();
-                var result = service.ReadFromFile(OTHER_CONFIG_FILE);
+                var service = Container.GetExportedValue<ICompareConfigDocumentType>();
+                var result = service.Read(OTHER_CONFIG_FILE);
                 Assert.IsNull(result);
             }
         }

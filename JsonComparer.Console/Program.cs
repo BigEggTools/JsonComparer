@@ -24,7 +24,9 @@
             var parameter = new Parser(
                     container,
                     ParserSettings.Builder().WithDefault().CaseSensitive(false).ComputeDisplayWidth().Build())
-                .Parse(args, typeof(SplitParameter));
+                .Parse(args,
+                    typeof(SplitParameter),
+                    typeof(CompareParameter));
             if (parameter == null) { return; }
 
             var handlers = container.GetExportedValues<IArgumentHandler>();

@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.JsonDocument
+﻿namespace BigEgg.Tools.JsonComparer.JsonDocuments
 {
     using System;
     using System.Collections;
@@ -38,6 +38,7 @@
             if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
             if (fieldInfos == null || fieldInfos.Count < 1) { throw new ArgumentNullException("fieldInfos"); }
 
+            Name = name;
             fields = fieldInfos.ToDictionary(item => item.Key, item => new Field(item.Key, item.Value));
         }
 

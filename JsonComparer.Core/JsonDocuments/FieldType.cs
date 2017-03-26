@@ -1,4 +1,4 @@
-﻿namespace BigEgg.Tools.JsonComparer.JsonDocument
+﻿namespace BigEgg.Tools.JsonComparer.JsonDocuments
 {
     /// <summary>
     /// The field type enumeration

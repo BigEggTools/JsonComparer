@@ -15,7 +15,7 @@
         /// <exception cref="System.ArgumentException">
         /// The field name, first value and second value cannot be null or empty
         /// </exception>
-        internal CompareValue(string name, string value)
+        public CompareValue(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(name)) { throw new ArgumentException("name"); }
             if (string.IsNullOrWhiteSpace(value)) { throw new ArgumentException("value"); }

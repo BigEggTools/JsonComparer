@@ -39,13 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompareData\CompareValue.cs" />
-    <Compile Include="CompareData\CompareItem.cs" />
-    <Compile Include="JsonDocument\DefaultField.cs" />
-    <Compile Include="JsonDocument\JsonDocument.cs" />
-    <Compile Include="JsonDocument\Field.cs" />
-    <Compile Include="JsonDocument\FieldType.cs" />
-    <Compile Include="JsonDocument\Property.cs" />
+    <Compile Include="JsonDocuments\DefaultField.cs" />
+    <Compile Include="JsonDocuments\JsonDocument.cs" />
+    <Compile Include="JsonDocuments\Field.cs" />
+    <Compile Include="JsonDocuments\FieldType.cs" />
+    <Compile Include="JsonDocuments\Property.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
