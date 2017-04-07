@@ -12,19 +12,6 @@
         private readonly IDictionary<string, Property> properties;
         private readonly IList<KeyValuePair<string, FieldType>> fieldInfos;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonDocument" /> class.
-        /// </summary>
-        /// <param name="fileName">The file name</param>
-        public JsonDocument(string fileName)
-        {
-            if (string.IsNullOrWhiteSpace(fileName)) { throw new ArgumentException("fileName"); }
-
-            FileName = fileName;
-            this.fieldInfos = new List<KeyValuePair<string, FieldType>>();
-
-            properties = new Dictionary<string, Property>();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonDocument" /> class.
@@ -47,7 +34,7 @@
         /// Gets the file name.
         /// </summary>
         /// <value>
-        /// The the file name.
+        /// The file name.
         /// </value>
         public string FileName { get; private set; }
 

@@ -27,19 +27,19 @@
             }
 
             [TestMethod]
-            [ExpectedException(typeof(FileNotFoundException))]
             public void FileNotExist()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
-                var result = service.ReadJsonFile("notExist.json");
+                AssertHelper.ExpectedException<FileNotFoundException>(() => service.ReadJsonFile("notExist.json"));
             }
 
             [TestMethod]
             public void ExistFile()
             {
                 var service = Container.GetExportedValue<IJsonDocumentService>();
-                var result = service.ReadJsonFile(TEST_JSON_FILE);
-                Assert.IsNotNull(result);
+                var document = service.ReadJsonFile(TEST_JSON_FILE);
+
+                Assert.IsNotNull(document);
             }
         }
 

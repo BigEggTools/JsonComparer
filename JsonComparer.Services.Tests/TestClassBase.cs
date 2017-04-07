@@ -7,6 +7,7 @@
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
     using BigEgg.Tools.JsonComparer.Services.FileActions;
     using BigEgg.Tools.JsonComparer.Services.Json;
+    using BigEgg.Tools.JsonComparer.Services.Compares;
 
     [TestClass]
     public class TestClassBase
@@ -18,7 +19,7 @@
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(JsonDocumentService), typeof(FileActionActionService), typeof(CompareConfigDocumentType)
+                typeof(JsonDocumentService), typeof(FileActionActionService), typeof(CompareConfigDocumentType), typeof(AnalyzeJsonDocumentService)
             ));
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();

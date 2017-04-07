@@ -6,7 +6,7 @@
     using System.Linq;
 
     /// <summary>
-    /// The property inforamtion of the JSON Document
+    /// The property information of the JSON Document
     /// </summary>
     public class Property : IEnumerable<KeyValuePair<string, Field>>
     {

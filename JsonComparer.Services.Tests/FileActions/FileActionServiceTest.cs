@@ -100,11 +100,10 @@
             }
 
             [TestMethod]
-            [ExpectedException(typeof(NotSupportedException))]
             public async Task SplitValue()
             {
                 var service = Container.GetExportedValue<IFileActionService>();
-                await service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, VERSION_NODE_NAME);
+                await AssertHelper.ExpectedExceptionAsync<NotSupportedException>(() => service.SplitFile(TEST_JSON_FILE, OUTPUT_PATH, VERSION_NODE_NAME));
             }
 
             [TestMethod]

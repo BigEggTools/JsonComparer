@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// The field informantion of the JSON Document Property
+    /// The field information of the JSON Document Property
     /// </summary>
     public class Field
     {

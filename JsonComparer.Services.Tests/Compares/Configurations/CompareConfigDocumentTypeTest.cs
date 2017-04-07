@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares.Configurations
+﻿namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares.Configurations
 {
     using System;
     using System.IO;
@@ -60,9 +59,10 @@ namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares.Configurations
             [TestMethod]
             public void NoFieldInfos_Null()
             {
+                //  TODO: will have a feature later to allow user don't pass the field infos
                 var service = Container.GetExportedValue<ICompareConfigDocumentType>();
                 var result = service.Read(JSON_CONFIG_FILE_1);
-                Assert.IsNotNull(result);
+                Assert.IsNull(result);
             }
 
             [TestMethod]

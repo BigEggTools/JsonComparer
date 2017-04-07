@@ -3,7 +3,7 @@
     /// <summary>
     /// The default field
     /// </summary>
-    /// <seealso cref="BigEgg.Tools.JsonComparer.JsonDocument.Field" />
+    /// <seealso cref="BigEgg.Tools.JsonComparer.JsonDocuments.Field" />
     public class DefaultField : Field
     {
         /// <summary>

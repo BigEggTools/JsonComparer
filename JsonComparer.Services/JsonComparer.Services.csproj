@@ -32,9 +32,8 @@
     <DocumentationFile>bin\Release\JsonComparer.Services.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BigEgg.Core, Version=2.1.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BigEgg.Core.2.1.0.4\lib\net452\BigEgg.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="BigEgg.Core, Version=2.1.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.Core.2.1.1.6\lib\net452\BigEgg.Core.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -52,7 +51,6 @@
     <Compile Include="Compares\Configurations\CompareFieldConfig.cs" />
     <Compile Include="Compares\Configurations\ICompareConfigDocumentType.cs" />
     <Compile Include="Compares\Configurations\PrivateSetterCamelCasePropertyNamesContractResolver.cs" />
-    <Compile Include="Compares\CompareService.cs" />
     <Compile Include="Compares\IAnalyzeJsonDocumentService.cs" />
     <Compile Include="Compares\ICompareService.cs" />
     <Compile Include="Constants.cs" />

@@ -16,7 +16,7 @@
     public class JsonDocumentService : IJsonDocumentService
     {
         /// <summary>
-        /// Reads the json file and return a <see cref="Newtonsoft.Json.Linq.JToken"/> object.
+        /// Reads the JSON file and return a <see cref="Newtonsoft.Json.Linq.JToken"/> object.
         /// </summary>
         /// <param name="path">The file path.</param>
         /// <returns>The <see cref="Newtonsoft.Json.Linq.JToken"/> object.</returns>
@@ -46,7 +46,7 @@
         }
 
         /// <summary>
-        /// Writes the <see cref="Newtonsoft.Json.Linq.JToken"/> object to a json file.
+        /// Writes the <see cref="Newtonsoft.Json.Linq.JToken"/> object to a JSON file.
         /// </summary>
         /// <param name="data">The JSON data.</param>
         /// <param name="path">The file path.</param>
@@ -89,7 +89,7 @@
         /// <summary>
         /// Gets the JSON node from a <see cref="Newtonsoft.Json.Linq.JToken" /> object.
         /// </summary>
-        /// <param name="jsonObject">The root json object.</param>
+        /// <param name="jsonObject">The root JSON object.</param>
         /// <param name="nodeName">The node's name.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
         /// <returns>

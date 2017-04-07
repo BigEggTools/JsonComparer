@@ -21,7 +21,7 @@
         /// </value>
         [JsonProperty(Required = Required.Always)]
         [Required(AllowEmptyStrings = false)]
-        public string StartNodeName { get; private set; }
+        public string StartNodeName { get; internal set; }
 
         /// <summary>
         /// Gets the name of the property nodes.
@@ -31,7 +31,7 @@
         /// </value>
         [JsonProperty(Required = Required.Always)]
         [MinimumElements(1)]
-        public IList<string> PropertyNodesName { get; private set; }
+        public IList<string> PropertyNodesName { get; internal set; }
 
         /// <summary>
         /// Gets the field infos.
@@ -39,9 +39,11 @@
         /// <value>
         /// The field infos.
         /// </value>
+        /// <remarks>TODO: will have a feature later to allow user don't pass the field infos</remarks>
         [JsonProperty(Required = Required.DisallowNull)]
-        [MinimumElements(1)]
-        public IList<CompareFieldConfig> FieldInfos { get; private set; }
+        [MinimumElements(1, AllowNull = false)]
+        //  TODO: will have a feature later to allow user don't pass the field infos
+        public IList<CompareFieldConfig> FieldInfos { get; internal set; }
 
 
         /// <summary>
@@ -52,9 +54,13 @@
         /// </returns>
         public override IEnumerable<ValidationResult> Validate()
         {
-            if (FieldInfos == null) { return base.Validate(); }
+            var errors = base.Validate();
 
-            return base.Validate().Concat(FieldInfos.SelectMany(fieldConfig => fieldConfig.Validate()));
+            if (FieldInfos != null)
+            {
+                errors = errors.Concat(FieldInfos.SelectMany(fieldConfig => fieldConfig.Validate()));
+            }
+            return errors;
         }
     }
 }

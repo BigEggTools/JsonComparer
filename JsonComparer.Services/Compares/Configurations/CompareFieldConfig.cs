@@ -16,20 +16,20 @@
         /// Gets the field name.
         /// </summary>
         /// <value>
-        /// The the field name.
+        /// The field name.
         /// </value>
         [JsonProperty(Required = Required.Always)]
         [Required(AllowEmptyStrings = false)]
-        public string FieldName { get; private set; }
+        public string FieldName { get; internal set; }
 
         /// <summary>
         /// Gets the field type.
         /// </summary>
         /// <value>
-        /// The the field type.
+        /// The field type.
         /// </value>
         [JsonProperty(Required = Required.Always)]
-        public FieldType FieldType { get; private set; }
+        public FieldType FieldType { get; internal set; }
 
         /// <summary>
         /// Gets the default value.
@@ -39,7 +39,7 @@
         /// </value>
         [JsonProperty(Required = Required.Always)]
         [Required(AllowEmptyStrings = false)]
-        public object DefaultValue { get; private set; }
+        public object DefaultValue { get; internal set; }
 
         /// <summary>
         /// Gets the replace value.
@@ -47,7 +47,7 @@
         /// <value>
         /// The replace value.
         /// </value>
-        public object ReplaceValue { get; private set; }
+        public object ReplaceValue { get; internal set; }
 
         /// <summary>
         /// Gets a value indicating whether the value need to check to be replace.
