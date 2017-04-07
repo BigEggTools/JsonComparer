@@ -5,15 +5,15 @@
     using System.Linq;
     using System.IO;
     using System.Threading.Tasks;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     using BigEgg.UnitTesting;
 
     using BigEgg.Tools.JsonComparer.JsonDocuments;
     using BigEgg.Tools.JsonComparer.Services.Compares;
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
 
-    public class AnalyzeJsonDocumentServiceTest
+    public class ReadFileServiceTest
     {
         private const string JSON_FILE = "TestData\\Compares\\article.json";
 
@@ -24,14 +24,14 @@
             [TestMethod]
             public async Task FileNotExist()
             {
-                var service = Container.GetExportedValue<IAnalyzeJsonDocumentService>();
+                var service = Container.GetExportedValue<IReadFileService>();
                 await AssertHelper.ExpectedExceptionAsync<FileNotFoundException>(() => service.GetJsonDocument("NotExist", GetCompareConfigDocument()));
             }
 
             [TestMethod]
             public async Task CannotFindNode()
             {
-                var service = Container.GetExportedValue<IAnalyzeJsonDocumentService>();
+                var service = Container.GetExportedValue<IReadFileService>();
                 var config = GetCompareConfigDocument();
                 config.StartNodeName = "NotExist";
 
@@ -41,7 +41,7 @@
             [TestMethod]
             public async Task GetDocument()
             {
-                var service = Container.GetExportedValue<IAnalyzeJsonDocumentService>();
+                var service = Container.GetExportedValue<IReadFileService>();
                 var config = GetCompareConfigDocument();
                 var document = await service.GetJsonDocument(JSON_FILE, config);
 

@@ -5,7 +5,7 @@
     using BigEgg.Tools.JsonComparer.JsonDocuments;
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
 
-    internal interface IAnalyzeJsonDocumentService
+    internal interface IReadFileService
     {
         Task<JsonDocument> GetJsonDocument(string fileName, CompareConfigDocument config);
     }

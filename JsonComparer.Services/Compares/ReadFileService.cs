@@ -5,6 +5,7 @@
     using System.ComponentModel.Composition;
     using System.Diagnostics;
     using System.Linq;
+    using System.IO;
     using System.Threading.Tasks;
 
     using Newtonsoft.Json.Linq;
@@ -12,21 +13,20 @@
     using BigEgg.Tools.JsonComparer.JsonDocuments;
     using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
     using BigEgg.Tools.JsonComparer.Services.Json;
-    using System.IO;
 
-    [Export(typeof(IAnalyzeJsonDocumentService))]
-    internal class AnalyzeJsonDocumentService : IAnalyzeJsonDocumentService
+    [Export(typeof(IReadFileService))]
+    internal class ReadFileService : IReadFileService
     {
         private readonly IJsonDocumentService jsonDocumentService;
         private readonly IDictionary<FieldType, JTokenType> supportJTokenTypes;
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AnalyzeJsonDocumentService"/> class.
+        /// Initializes a new instance of the <see cref="ReadFileService"/> class.
         /// </summary>
         /// <param name="jsonDocumentService">The JSON document service.</param>
         [ImportingConstructor]
-        public AnalyzeJsonDocumentService(IJsonDocumentService jsonDocumentService)
+        public ReadFileService(IJsonDocumentService jsonDocumentService)
         {
             this.jsonDocumentService = jsonDocumentService;
 

@@ -62,7 +62,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Compares\AnalyzeJsonDocumentServiceTest.cs" />
+    <Compile Include="Compares\ReadFileServiceTest.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocumentTypeTest.cs" />
     <Compile Include="FileActions\FileActionServiceTest.cs" />
     <Compile Include="Json\JsonDocumentServiceTest.cs" />

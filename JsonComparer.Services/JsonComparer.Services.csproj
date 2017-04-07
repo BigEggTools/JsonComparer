@@ -45,13 +45,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compares\AnalyzeJsonDocumentService.cs" />
+    <Compile Include="Compares\ReadFileService.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocument.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocumentType.cs" />
     <Compile Include="Compares\Configurations\CompareFieldConfig.cs" />
     <Compile Include="Compares\Configurations\ICompareConfigDocumentType.cs" />
     <Compile Include="Compares\Configurations\PrivateSetterCamelCasePropertyNamesContractResolver.cs" />
-    <Compile Include="Compares\IAnalyzeJsonDocumentService.cs" />
+    <Compile Include="Compares\IReadFileService.cs" />
     <Compile Include="Compares\ICompareService.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="FileActions\FileActionActionService.cs" />
