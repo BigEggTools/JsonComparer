@@ -1,22 +1,22 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Moq;
-using BigEgg.UnitTesting;
-
-using BigEgg.Tools.JsonComparer.Services.Compares;
-using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
-using BigEgg.Progress;
-using System.Threading.Tasks;
-using BigEgg.Tools.JsonComparer.JsonDocuments;
-using System.Collections.Generic;
-using BigEgg.Tools.JsonComparer.CompareData;
-
-namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares
+﻿namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.Composition;
+    using System.ComponentModel.Composition.Hosting;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
+    using BigEgg.Progress;
+    using BigEgg.UnitTesting;
+
+    using BigEgg.Tools.JsonComparer.CompareData;
+    using BigEgg.Tools.JsonComparer.JsonDocuments;
+    using BigEgg.Tools.JsonComparer.Services.Compares;
+    using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
+
     public class CompareServiceTest
     {
         [TestClass]
