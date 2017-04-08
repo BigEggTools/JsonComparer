@@ -1,0 +1,427 @@
+{
+  "dynamic": "false",
+  "include_in_all": false,
+  "date_detection": false,
+  "_all": {
+    "analyzer": "standard"
+  },
+  "_timestamp": {
+    "enabled": true
+  },
+  "properties": {
+    "_attributes": {
+      "properties": {
+        "_behavior": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "_includeInIndex": {
+          "type": "string"
+        },
+        "_lastModified": {
+          "type": "date",
+          "format": "dateOptionalTime"
+        },
+        "_meteredSources": {
+          "type": "nested",
+          "include_in_parent": true,
+          "properties": {
+            "market": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            }
+          }
+        },
+        "_state": {
+          "type": "string"
+        },
+        "_tenant": {
+          "type": "string"
+        },
+        "_type": {
+          "type": "string"
+        },
+        "_version": {
+          "type": "string"
+        }
+      }
+    },
+    "_contentSize": {
+      "type": "long",
+      "include_in_all": false
+    },
+    "_document": {
+      "properties": {
+        "_expirationDateTime": {
+          "type": "string"
+        },
+        "_isPublishingLocked": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string",
+          "include_in_all": true,
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "kicker": {
+          "type": "string",
+          "include_in_all": true,
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "subtitle": {
+          "type": "string",
+          "include_in_all": true,
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "abstract": {
+          "type": "string",
+          "include_in_all": true,
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "body": {
+          "type": "string",
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "authors": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "include_in_all": true,
+              "fields": {
+                "ft": {
+                  "type": "string",
+                  "analyzer": "standard"
+                }
+              }
+            },
+            "bio": {
+              "type": "string"
+            }
+          }
+        },
+        "headlines": {
+          "properties": {
+            "title": {
+              "type": "string",
+              "include_in_all": true,
+              "fields": {
+                "ft": {
+                  "type": "string",
+                  "analyzer": "standard"
+                }
+              }
+            },
+            "kicker": {
+              "type": "string",
+              "include_in_all": true,
+              "fields": {
+                "ft": {
+                  "type": "string",
+                  "analyzer": "standard"
+                }
+              }
+            },
+            "subtitle": {
+              "type": "string",
+              "include_in_all": true,
+              "fields": {
+                "ft": {
+                  "type": "string",
+                  "analyzer": "standard"
+                }
+              }
+            }
+          }
+        },
+        "subscriptionType": {
+          "type": "string"
+        },
+        "resources": {
+          "properties": {
+            "contentType": {
+              "type": "string"
+            }
+          }
+        },
+        "seo": {
+          "properties": {
+            "canonicalAuthority": {
+              "type": "string"
+            },
+            "keywords": {
+              "type": "string"
+            }
+          }
+        },
+        "sourceHref": {
+          "type": "string"
+        },
+        "_sourceMetering": {
+          "properties": {
+            "isMetered": {
+              "type": "boolean"
+            }
+          }
+        },
+        "$type": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "_links": {
+          "properties": {
+            "self": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "parent": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "children": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "feed": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "related": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "references": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "section": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "provider": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "sources": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "elements": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "binaryReferences": {
+              "type": "nested",
+              "include_in_parent": true,
+              "properties": {
+                "alias": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "fields": {
+                    "ft": {
+                      "type": "string",
+                      "analyzer": "standard"
+                    }
+                  }
+                },
+                "contentType": {
+                  "type": "string",
+                  "fields": {
+                    "ft": {
+                      "type": "string",
+                      "analyzer": "standard"
+                    }
+                  }
+                },
+                "extension": {
+                  "type": "string"
+                },
+                "sizeInBytes": {
+                  "type": "long"
+                },
+                "sourceHref": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "_name": {
+          "type": "string",
+          "include_in_all": true,
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "_createdDateTime": {
+          "type": "string"
+        },
+        "_lastEditedDateTime": {
+          "type": "string"
+        },
+        "_lastPublishedDateTime": {
+          "type": "string"
+        },
+        "displayPublishedDateTime": {
+          "type": "string"
+        },
+        "updatedDateTime": {
+          "type": "string"
+        },
+        "_locale": {
+          "type": "string",
+          "fields": {
+            "ft": {
+              "type": "string",
+              "analyzer": "standard"
+            }
+          }
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "facets": {
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "values": {
+              "type": "string"
+            }
+          }
+        },
+        "labels": {
+          "properties": {
+            "category": {
+              "properties": {
+                "product": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_embedded": {
+      "type": "object",
+      "enabled": false
+    },
+    "_linkIds": {
+      "properties": {
+        "directPredecessorIds": {
+          "type": "string"
+        },
+        "sectionIds": {
+          "type": "string"
+        }
+      }
+    },
+    "_referencedBy": {
+      "type": "nested",
+      "properties": {
+        "documentType": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "tenant": {
+          "type": "string"
+        }
+      }
+    },
+    "_mapping": {
+      "type": "object",
+      "enabled": false
+    },
+    "_snippet": {
+      "type": "object",
+      "enabled": false
+    },
+    "_versionInfo": {
+      "properties": {
+        "_major": {
+          "type": "long"
+        },
+        "_minor": {
+          "type": "long"
+        },
+        "_revision": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}

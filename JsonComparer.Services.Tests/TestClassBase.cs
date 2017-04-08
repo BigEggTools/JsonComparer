@@ -14,12 +14,12 @@
     {
         private readonly CompositionContainer container;
 
-
         protected TestClassBase()
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(JsonDocumentService), typeof(FileActionActionService), typeof(CompareConfigDocumentType), typeof(ReadFileService)
+                typeof(JsonDocumentService), typeof(FileActionActionService),
+                typeof(CompareConfigDocumentType), typeof(ReadFileService), typeof(AnalyzeService), typeof(CompareService)
             ));
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();

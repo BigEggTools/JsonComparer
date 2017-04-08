@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareData\CompareFile.cs" />
+    <Compile Include="CompareData\CompareItem.cs" />
+    <Compile Include="CompareData\CompareValue.cs" />
     <Compile Include="JsonDocuments\DefaultField.cs" />
     <Compile Include="JsonDocuments\JsonDocument.cs" />
     <Compile Include="JsonDocuments\Field.cs" />

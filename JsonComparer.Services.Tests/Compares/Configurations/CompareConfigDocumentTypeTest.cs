@@ -30,11 +30,10 @@
             }
 
             [TestMethod]
-            [ExpectedException(typeof(FileNotFoundException))]
             public void FileNotExist()
             {
                 var service = Container.GetExportedValue<ICompareConfigDocumentType>();
-                service.Read("notExist.json");
+                AssertHelper.ExpectedException<FileNotFoundException>(() => service.Read("notExist.json"));
             }
 
             [TestMethod]

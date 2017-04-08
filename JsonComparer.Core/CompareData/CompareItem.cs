@@ -5,7 +5,7 @@
     using System.Linq;
 
     /// <summary>
-    /// The property compare inforamtion of the JSON Document
+    /// The property compare information of the JSON Document
     /// </summary>
     public class CompareItem
     {
@@ -51,11 +51,11 @@
         /// <param name="propertyName">The property name.</param>
         /// <param name="data1">The data form file1.</param>
         /// <exception cref="System.ArgumentException">propertyName cannot be null or empty.</exception>
-        /// <exception cref="System.ArgumentNullException">data1 cannot be null at sametime.</exception>
+        /// <exception cref="System.ArgumentNullException">data1 cannot be null at same time.</exception>
         public static CompareItem WithData1(string propertyName, IList<CompareValue> data1)
         {
             if (string.IsNullOrWhiteSpace(propertyName)) { throw new ArgumentException("propertyName cannot be null or empty."); }
-            if (data1 == null) { throw new ArgumentNullException("data1 cannot be null at sametime."); }
+            if (data1 == null) { throw new ArgumentNullException("data1 cannot be null at same time."); }
 
             return new CompareItem()
             {
@@ -72,11 +72,11 @@
         /// <param name="propertyName">The property name.</param>
         /// <param name="data2">The data form file2.</param>
         /// <exception cref="System.ArgumentException">propertyName cannot be null or empty.</exception>
-        /// <exception cref="System.ArgumentNullException">data2 cannot be null at sametime.</exception>
+        /// <exception cref="System.ArgumentNullException">data2 cannot be null at same time.</exception>
         public static CompareItem WithData2(string propertyName, IList<CompareValue> data2)
         {
             if (string.IsNullOrWhiteSpace(propertyName)) { throw new ArgumentException("propertyName cannot be null or empty."); }
-            if (data2 == null) { throw new ArgumentNullException("data2 cannot be null at sametime."); }
+            if (data2 == null) { throw new ArgumentNullException("data2 cannot be null at same time."); }
 
             return new CompareItem()
             {

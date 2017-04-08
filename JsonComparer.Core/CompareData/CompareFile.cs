@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// The file compare inforamtion of the JSON Document
+    /// The file compare information of the JSON Document
     /// </summary>
     public class CompareFile
     {
@@ -15,7 +15,7 @@
         /// <param name="compareItems">The compare items form file1 and file2.</param>
         /// <exception cref="System.ArgumentException">fileName cannot be null or empty.</exception>
         /// <exception cref="System.ArgumentNullException">compareItems cannot be null or empty.</exception>
-        internal CompareFile(string fileName, IList<CompareItem> compareItems)
+        public CompareFile(string fileName, IList<CompareItem> compareItems)
         {
             if (string.IsNullOrWhiteSpace(fileName)) { throw new ArgumentException("fileName cannot be null or empty."); }
             if (compareItems == null && compareItems.Count == 0) { throw new ArgumentNullException("compareItems cannot be null or empty."); }

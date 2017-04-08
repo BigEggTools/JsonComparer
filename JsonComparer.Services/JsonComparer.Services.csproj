@@ -45,6 +45,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compares\AnalyzeService.cs" />
+    <Compile Include="Compares\CompareService.cs" />
+    <Compile Include="Compares\IAnalyzeService.cs" />
     <Compile Include="Compares\ReadFileService.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocument.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocumentType.cs" />
