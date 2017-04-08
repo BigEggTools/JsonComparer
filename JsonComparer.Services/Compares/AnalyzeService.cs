@@ -75,14 +75,14 @@
 
         private CompareItem CompareWithNothing(Property property)
         {
-            Preconditions.NotNull(property, "property1");
+            Preconditions.NotNull(property, "property");
 
             return CompareItem.WithData1(property.Name, property.Select(item => FieldToCompare(item.Value)).ToList());
         }
 
         private CompareItem NothingWithCompareData(Property property)
         {
-            Preconditions.NotNull(property, "property1");
+            Preconditions.NotNull(property, "property");
 
             return CompareItem.WithData2(property.Name, property.Select(item => FieldToCompare(item.Value)).ToList());
         }

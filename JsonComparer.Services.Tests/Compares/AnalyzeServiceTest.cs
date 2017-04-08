@@ -1,15 +1,14 @@
-﻿using BigEgg.Tools.JsonComparer.JsonDocuments;
-using BigEgg.Tools.JsonComparer.Services.Compares;
-using BigEgg.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares
+﻿namespace BigEgg.Tools.JsonComparer.Services.Tests.Compares
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using BigEgg.UnitTesting;
+
+    using BigEgg.Tools.JsonComparer.JsonDocuments;
+    using BigEgg.Tools.JsonComparer.Services.Compares;
+
     public class AnalyzeServiceTest
     {
         [TestClass]
