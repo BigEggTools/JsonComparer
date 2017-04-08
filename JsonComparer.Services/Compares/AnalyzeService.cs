@@ -7,74 +7,90 @@
 
     using BigEgg.Tools.JsonComparer.CompareData;
     using BigEgg.Tools.JsonComparer.JsonDocuments;
-    using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
 
     [Export(typeof(IAnalyzeService))]
     internal class AnalyzeService : IAnalyzeService
     {
         public CompareFile Compare(JsonDocument document1, JsonDocument document2)
         {
-            Preconditions.Check(document1 != null || document2 != null, "Parameter 'document1' and 'document2' cannot be null at same time");
+            Preconditions.Check(document1 != null || document2 != null, "Parameter 'document1' and 'document2' cannot be null at same time.");
+            Preconditions.Check(document1 == null || document2 == null || document1.FileName.Equals(document2.FileName), "2 documents should with same name.");
 
-            return null;
+            var compareItems = new List<CompareItem>();
+
+            if (document1 == null)
+            {
+                foreach (var property in document2)
+                {
+                    compareItems.Add(NothingWithCompareData(property.Value));
+                };
+                return new CompareFile(document2.FileName, compareItems);
+            }
+
+            if (document2 == null)
+            {
+                foreach (var property in document1)
+                {
+                    compareItems.Add(CompareWithNothing(property.Value));
+                };
+                return new CompareFile(document1.FileName, compareItems);
+            }
+
+            var properties1 = document1.Properties;
+            var properties2 = document2.Properties;
+            var i = 0; var j = 0;
+            while (true)
+            {
+                if (i == properties1.Count)
+                {
+                    while (j < properties2.Count) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
+                    break;
+                }
+                if (j == properties2.Count)
+                {
+                    while (i < properties1.Count) { compareItems.Add(CompareWithNothing(properties1[i++])); }
+                    break;
+                }
+
+                var compareResult = properties1[i].Name.CompareTo(properties2[j].Name);
+                if (compareResult > 0) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
+                else if (compareResult < 0) { compareItems.Add(CompareWithNothing(properties1[i++])); }
+                else { compareItems.Add(CompareWithAnother(properties1[i++], properties2[j++])); }
+            }
+            return new CompareFile(document1.FileName, compareItems);
         }
 
 
         #region Property to Compare Item
-        private CompareItem CompareWithAnother(Property property1, Property property2, IList<CompareFieldConfig> fieldConfigs)
+        private CompareItem CompareWithAnother(Property property1, Property property2)
         {
             Preconditions.NotNull(property1, "property1");
             Preconditions.NotNull(property2, "property2");
-            Preconditions.NotNull(fieldConfigs, "fieldConfigs");
             Preconditions.Check<NotSupportedException>(property1.Name.Equals(property2.Name, StringComparison.InvariantCulture), "Should not compare to property with different name.");
-            Preconditions.Check<ArgumentException>(fieldConfigs.Count > 0);
 
             return CompareItem.WithBothData(property1.Name,
-                property1.Select(item =>
-                {
-                    var setting = fieldConfigs.First(config => config.FieldName.Equals(item.Key));
-                    return FieldToCompare(item.Value, setting.DefaultValue, setting.ReplaceValue);
-                }).ToList(),
-                property2.Select(item =>
-                {
-                    var setting = fieldConfigs.First(config => config.FieldName.Equals(item.Key));
-                    return FieldToCompare(item.Value, setting.DefaultValue, setting.ReplaceValue);
-                }).ToList());
+                property1.Select(item => FieldToCompare(item.Value)).ToList(),
+                property2.Select(item => FieldToCompare(item.Value)).ToList());
         }
 
-        private CompareItem CompareWithNothing(Property property, IList<CompareFieldConfig> fieldConfigs)
+        private CompareItem CompareWithNothing(Property property)
         {
             Preconditions.NotNull(property, "property1");
-            Preconditions.NotNull(fieldConfigs, "fieldConfigs");
-            Preconditions.Check<ArgumentException>(fieldConfigs.Count > 0);
 
-            return CompareItem.WithData1(property.Name, property.Select(item =>
-            {
-                var setting = fieldConfigs.First(config => config.FieldName.Equals(item.Key));
-                return FieldToCompare(item.Value, setting.DefaultValue, setting.ReplaceValue);
-            }).ToList());
+            return CompareItem.WithData1(property.Name, property.Select(item => FieldToCompare(item.Value)).ToList());
         }
 
-        private CompareItem NothingWithCompareData(Property property, IList<CompareFieldConfig> fieldConfigs)
+        private CompareItem NothingWithCompareData(Property property)
         {
             Preconditions.NotNull(property, "property1");
-            Preconditions.NotNull(fieldConfigs, "fieldConfigs");
-            Preconditions.Check<ArgumentException>(fieldConfigs.Count > 0);
 
-            return CompareItem.WithData2(property.Name, property.Select(item =>
-            {
-                var setting = fieldConfigs.First(config => config.FieldName.Equals(item.Key));
-                return FieldToCompare(item.Value, setting.DefaultValue, setting.ReplaceValue);
-            }).ToList());
+            return CompareItem.WithData2(property.Name, property.Select(item => FieldToCompare(item.Value)).ToList());
         }
         #endregion
 
-        private CompareValue FieldToCompare(Field field, object defaultValue, object replaceValue)
+        private CompareValue FieldToCompare(Field field)
         {
-            return new CompareValue(field.Name,
-                string.IsNullOrWhiteSpace(field.Value) || (replaceValue != null && field.Value.Equals(replaceValue.ToString()))
-                    ? defaultValue.ToString()
-                    : field.Value);
+            return new CompareValue(field.Name, field.Value);
         }
     }
 }

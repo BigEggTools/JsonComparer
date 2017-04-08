@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// The JSON Document
@@ -37,6 +38,14 @@
         /// The file name.
         /// </value>
         public string FileName { get; private set; }
+
+        /// <summary>
+        /// Gets the properties.
+        /// </summary>
+        /// <value>
+        /// The properties.
+        /// </value>
+        public IList<Property> Properties { get { return properties.Values.ToList(); } }
 
         /// <summary>
         /// Gets the <see cref="Property"/> with the property name.

@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Compares\AnalyzeServiceTest.cs" />
     <Compile Include="Compares\CompareServiceTest.cs" />
     <Compile Include="Compares\ReadFileServiceTest.cs" />
     <Compile Include="Compares\Configurations\CompareConfigDocumentTypeTest.cs" />

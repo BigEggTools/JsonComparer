@@ -42,7 +42,7 @@
         /// <value>
         /// The compare values from 2 files.
         /// </value>
-        public IDictionary<string, KeyValuePair<CompareValue, CompareValue>> Data { get; private set; }
+        public IDictionary<string, Tuple<CompareValue, CompareValue>> Data { get; private set; }
 
 
         /// <summary>
@@ -62,7 +62,7 @@
                 PropertyName = propertyName,
                 HasData1 = true,
                 HasData2 = false,
-                Data = data1.ToDictionary(item => item.Name, item => new KeyValuePair<CompareValue, CompareValue>(item, null))
+                Data = data1.ToDictionary(item => item.Name, item => new Tuple<CompareValue, CompareValue>(item, null))
             };
         }
 
@@ -83,7 +83,7 @@
                 PropertyName = propertyName,
                 HasData1 = false,
                 HasData2 = true,
-                Data = data2.ToDictionary(item => item.Name, item => new KeyValuePair<CompareValue, CompareValue>(null, item))
+                Data = data2.ToDictionary(item => item.Name, item => new Tuple<CompareValue, CompareValue>(null, item))
             };
         }
 
@@ -99,18 +99,18 @@
         {
             if (string.IsNullOrWhiteSpace(propertyName)) { throw new ArgumentException("propertyName cannot be null or empty."); }
             if (data1 == null || data2 == null) { throw new ArgumentNullException("data1 or data2 cannot be null."); }
-            if (data1.Select(item => item.Name).SequenceEqual(data2.Select(item => item.Name))) { throw new ArgumentException("data1, data2 should have same value sequence."); }
+            if (!data1.Select(item => item.Name).ToList().SequenceEqual(data2.Select(item => item.Name).ToList())) { throw new ArgumentException("data1, data2 should have same value sequence."); }
 
             var result = new CompareItem()
             {
                 PropertyName = propertyName,
                 HasData1 = true,
                 HasData2 = true,
-                Data = new Dictionary<string, KeyValuePair<CompareValue, CompareValue>>()
+                Data = new Dictionary<string, Tuple<CompareValue, CompareValue>>()
             };
             for (int i = 0; i < data1.Count; i++)
             {
-                result.Data.Add(data1[i].Name, new KeyValuePair<CompareValue, CompareValue>(data1[i], data2[i]));
+                result.Data.Add(data1[i].Name, new Tuple<CompareValue, CompareValue>(data1[i], data2[i]));
             }
 
             return result;
