@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JsonComparer.Reports")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The output reports library of JSON Comparer Tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JsonComparer.Reports")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("BigEgg")]
+[assembly: AssemblyProduct("BigEgg Tools")]
+[assembly: AssemblyCopyright("Copyright © 2017 BigEgg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

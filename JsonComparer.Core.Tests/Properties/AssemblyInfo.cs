@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("JsonComparer.Core.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JsonComparer.Core.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("BigEgg")]
+[assembly: AssemblyProduct("BigEgg Tools")]
+[assembly: AssemblyCopyright("Copyright © 2017 BigEgg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

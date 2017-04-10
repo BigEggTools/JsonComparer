@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("The application logic of JSON Comparer Tool")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BigEgg")]
-[assembly: AssemblyProduct("BigEgg.Tools")]
-[assembly: AssemblyCopyright("Copyright © BigEgg 2017")]
+[assembly: AssemblyProduct("BigEgg Tools")]
+[assembly: AssemblyCopyright("Copyright © 2017 BigEgg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
