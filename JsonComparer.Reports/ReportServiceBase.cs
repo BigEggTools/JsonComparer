@@ -47,7 +47,7 @@
         /// <param name="path1">The directory path of JSON files.</param>
         /// <param name="path2">The another directory path of JSON files.</param>
         /// <param name="outputPath">The output path.</param>
-        /// <param name="split">if set to <c>true</c> [split].</param>
+        /// <param name="split">if set to <c>true</c> split the output.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentException">
         /// Parameter 'compareFiles' should not be null or empty list.
@@ -66,6 +66,7 @@
             if (string.IsNullOrWhiteSpace(path1)) { throw new ArgumentException("Parameter 'path1' should not be empty string."); }
             if (string.IsNullOrWhiteSpace(path2)) { throw new ArgumentException("Parameter 'path2' should not be empty string."); }
             if (string.IsNullOrWhiteSpace(outputPath)) { throw new ArgumentException("Parameter 'outputPath' should not be empty string."); }
+            if (!SupportSplitOutputFiles && split) { throw new NotSupportedException($"This report service '{Name}' is not support to split reports per file."); }
             if (path1.Equals(path2, StringComparison.OrdinalIgnoreCase)) { throw new ArgumentException("Path1 should not be same as Path2"); }
 
             return OutputCore(compareFiles, path1, path2, outputPath, split);
