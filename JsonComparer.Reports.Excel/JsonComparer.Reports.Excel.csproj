@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Configurations\ExcelReportConfigurationDocument.cs" />
     <Compile Include="Configurations\StyleConfig.cs" />
+    <Compile Include="ExcelReportDocuemnt.cs" />
+    <Compile Include="ExcelReportDocumentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
