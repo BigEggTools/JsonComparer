@@ -21,10 +21,10 @@
                 cell.Style.Alignment.SetHorizontal(styleConfig.HorizontalAlignment.Value);
 
             if (styleConfig.OutsideBorder.HasValue)
-                cell.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thick);
+                cell.Style.Border.SetOutsideBorder(styleConfig.OutsideBorder.Value ? XLBorderStyleValues.Thick : XLBorderStyleValues.None);
 
             if (styleConfig.InsideBorder.HasValue)
-                cell.Style.Border.SetInsideBorder(XLBorderStyleValues.Thin);
+                cell.Style.Border.SetInsideBorder(styleConfig.InsideBorder.Value ? XLBorderStyleValues.Thin : XLBorderStyleValues.None);
 
             return cell;
         }
@@ -44,10 +44,10 @@
                 range.Style.Alignment.SetHorizontal(styleConfig.HorizontalAlignment.Value);
 
             if (styleConfig.OutsideBorder.HasValue)
-                range.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thick);
+                range.Style.Border.SetOutsideBorder(styleConfig.OutsideBorder.Value ? XLBorderStyleValues.Thick : XLBorderStyleValues.None);
 
             if (styleConfig.InsideBorder.HasValue)
-                range.Style.Border.SetInsideBorder(XLBorderStyleValues.Thin);
+                range.Style.Border.SetInsideBorder(styleConfig.InsideBorder.Value ? XLBorderStyleValues.Thin : XLBorderStyleValues.None);
 
             return range;
         }
