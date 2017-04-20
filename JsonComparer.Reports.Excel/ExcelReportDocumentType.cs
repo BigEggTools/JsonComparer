@@ -6,7 +6,7 @@
     using ClosedXML.Excel;
 
     [Export]
-    internal class ExcelReportDocumentType
+    internal class ExcelReportDocumentType : IExcelReportDocumentType
     {
         public ExcelReportDocuemnt New()
         {

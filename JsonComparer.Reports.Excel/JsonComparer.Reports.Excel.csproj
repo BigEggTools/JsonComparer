@@ -54,7 +54,10 @@
     <Compile Include="Configurations\StyleConfig.cs" />
     <Compile Include="ExcelReportDocuemnt.cs" />
     <Compile Include="ExcelReportDocumentType.cs" />
+    <Compile Include="ExcelReportService.cs" />
+    <Compile Include="IExcelReportDocumentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ExcelStyleExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
