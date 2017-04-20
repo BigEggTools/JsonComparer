@@ -3,22 +3,12 @@
     using System.ComponentModel.Composition;
     using System.IO;
 
-    using ClosedXML.Excel;
-
-    [Export]
+    [Export(typeof(IExcelReportDocumentType))]
     internal class ExcelReportDocumentType : IExcelReportDocumentType
     {
         public ExcelReportDocuemnt New()
         {
             return new ExcelReportDocuemnt();
-        }
-
-        public ExcelReportDocuemnt Open(string filename)
-        {
-            Preconditions.NotNullOrWhiteSpace(filename, "filename");
-            Preconditions.Check<FileNotFoundException>(File.Exists(filename));
-
-            return new ExcelReportDocuemnt(new XLWorkbook(filename));
         }
 
         public void Save(ExcelReportDocuemnt document, string filename)

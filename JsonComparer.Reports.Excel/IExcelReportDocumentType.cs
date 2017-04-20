@@ -4,8 +4,6 @@
     {
         ExcelReportDocuemnt New();
 
-        ExcelReportDocuemnt Open(string filename);
-
         void Save(ExcelReportDocuemnt document, string filename);
     }
 }

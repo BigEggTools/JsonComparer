@@ -1,13 +1,10 @@
-﻿namespace BigEgg.Tools.JsonComparer.Services.Tests
+﻿namespace JsonComparer.Reports.Excel.Tests
 {
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using BigEgg.Tools.JsonComparer.Services.Compares.Configurations;
-    using BigEgg.Tools.JsonComparer.Services.FileActions;
-    using BigEgg.Tools.JsonComparer.Services.Json;
-    using BigEgg.Tools.JsonComparer.Services.Compares;
+    using BigEgg.Tools.JsonComparer.Reports.Excel;
 
     [TestClass]
     public abstract class TestClassBase
@@ -18,8 +15,7 @@
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(JsonDocumentService), typeof(FileActionActionService),
-                typeof(CompareConfigDocumentType), typeof(ReadFileService), typeof(AnalyzeService), typeof(CompareService)
+                typeof(ExcelReportDocumentType)
             ));
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();

@@ -33,10 +33,10 @@
         public void NewSheet(CompareFile compareData, string path1, string path2, ExcelReportConfigurationDocument config)
         {
             Preconditions.NotNull(compareData, "compareData");
-            Preconditions.Check(compareData.CompareItems.Count == 0, "CompareData should not be empty.");
+            Preconditions.Check(compareData.CompareItems.Count > 0, "CompareData should not be empty.");
             Preconditions.NotNullOrWhiteSpace(path1, "path1");
             Preconditions.NotNullOrWhiteSpace(path2, "path2");
-            Preconditions.Check(path1.Equals(path2, StringComparison.OrdinalIgnoreCase), "Path1 should not be same as Path2");
+            Preconditions.Check(!path1.Equals(path2, StringComparison.OrdinalIgnoreCase), "Path1 should not be same as Path2");
 
             var columns = compareData.CompareItems.First().Data.Select(x => x.Key).ToList();
             var worksheet = workbook.Worksheets.Add(compareData.FileName);
