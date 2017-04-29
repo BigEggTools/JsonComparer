@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
+    using System.IO;
     using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +14,6 @@
     using BigEgg.Tools.JsonComparer.CompareData;
     using BigEgg.Tools.JsonComparer.Reports;
     using BigEgg.Tools.JsonComparer.Reports.Excel;
-    using System.IO;
 
     public class ExcelReportServiceTest
     {

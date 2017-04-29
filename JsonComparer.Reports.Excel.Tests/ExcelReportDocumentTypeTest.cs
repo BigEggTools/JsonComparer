@@ -1,17 +1,16 @@
-﻿using BigEgg.Tools.JsonComparer.CompareData;
-using BigEgg.Tools.JsonComparer.Reports.Excel;
-using BigEgg.Tools.JsonComparer.Reports.Excel.Configurations;
-using BigEgg.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JsonComparer.Reports.Excel.Tests
+﻿namespace JsonComparer.Reports.Excel.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using BigEgg.UnitTesting;
+
+    using BigEgg.Tools.JsonComparer.CompareData;
+    using BigEgg.Tools.JsonComparer.Reports.Excel;
+    using BigEgg.Tools.JsonComparer.Reports.Excel.Configurations;
+
     public class ExcelReportDocumentTypeTest : TestClassBase
     {
         [TestClass]
