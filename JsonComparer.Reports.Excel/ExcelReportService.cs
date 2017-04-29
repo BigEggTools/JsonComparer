@@ -23,6 +23,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ExcelReportService"/> class.
         /// </summary>
+        [ImportingConstructor]
         public ExcelReportService(IExcelReportDocumentType documentType)
             : base("Excel", true)
         {

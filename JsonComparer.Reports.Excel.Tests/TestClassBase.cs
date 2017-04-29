@@ -15,7 +15,7 @@
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(ExcelReportDocumentType)
+                typeof(ExcelReportDocumentType), typeof(ExcelReportService)
             ));
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();
