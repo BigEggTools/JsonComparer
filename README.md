@@ -7,3 +7,21 @@ The tool to compare JSON file(s) and output the differences in many kinds of rep
 
 ## Extension Tools
 Will also support the split JSON file and merge JSON files functions
+
+## Features
+To get what current verion of this tool support, use --help to get the following information:
+```
+JsonComparer: v0.2.0.8
+
+Application support these commands:
+
+    split    |  Split the big JSON file to multiple small files.
+    compare  |  Compare the JSON files in two folder.
+
+For help on command detail, please run <command> --help to check
+```
+
+To know more about the feature, please click the following links:
+
+* [Split](./docs/Split.md)
+* [Compare](./docs/Compare.md)
