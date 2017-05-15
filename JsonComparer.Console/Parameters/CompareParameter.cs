@@ -14,7 +14,7 @@
         [StringProperty("config", "c", "The configuration file for compare action.", Required = true)]
         public string ConfigFile { get; set; }
 
-        [StringProperty("output", "o", "The File Name of the Compare Result.")]
+        [StringProperty("output", "o", "The output folder Name of the Compare Results.", DefaultValue = "output")]
         public string OutputPath { get; set; }
     }
 }
