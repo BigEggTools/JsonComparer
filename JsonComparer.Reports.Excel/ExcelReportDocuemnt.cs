@@ -62,16 +62,16 @@
 
             for (var index = 1; index <= columns.Count; index++)
             {
-                cell = worksheet.Cell(config.SkipRow + 1, config.SkipColumn + 1 + index);
+                cell = worksheet.Cell(config.SkipRow + 2, config.SkipColumn + 1 + index);
                 cell.SetStyle(config.Header2Style).Value = columns[index - 1];
 
-                cell = worksheet.Cell(config.SkipRow + 1, config.SkipColumn + 1 + columns.Count + index);
+                cell = worksheet.Cell(config.SkipRow + 2, config.SkipColumn + 1 + columns.Count + index);
                 cell.SetStyle(config.Header2Style).Value = columns[index - 1];
             }
 
             worksheet.Range(config.SkipRow + 1, config.SkipColumn + 1, config.SkipRow + 2, config.SkipColumn + 1).SetStyle(config.BorderStyle);
             worksheet.Range(config.SkipRow + 1, config.SkipColumn + 2, config.SkipRow + 2, config.SkipColumn + 1 + columns.Count).SetStyle(config.BorderStyle);
-            worksheet.Range(config.SkipRow + 1, config.SkipColumn + 1 + columns.Count + 2, config.SkipRow + 1, config.SkipColumn + 1 + columns.Count * 2).SetStyle(config.BorderStyle);
+            worksheet.Range(config.SkipRow + 1, config.SkipColumn + 1 + columns.Count + 1, config.SkipRow + 2, config.SkipColumn + 1 + columns.Count * 2).SetStyle(config.BorderStyle);
         }
 
         private void FillData(IXLWorksheet worksheet, IList<string> columns, CompareFile compareData, ExcelReportConfigurationDocument config)
@@ -85,7 +85,7 @@
 
             worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 1, rowId - 1, config.SkipColumn + 1).SetStyle(config.BorderStyle);
             worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 2, rowId - 1, config.SkipColumn + 1 + columns.Count).SetStyle(config.BorderStyle);
-            worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 1 + columns.Count + 2, rowId - 1, config.SkipColumn + 1 + columns.Count * 2).SetStyle(config.BorderStyle);
+            worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 1 + columns.Count + 1, rowId - 1, config.SkipColumn + 1 + columns.Count * 2).SetStyle(config.BorderStyle);
         }
 
         private void FillItem(IXLWorksheet worksheet, int rowId, IList<string> columns, CompareItem compareItems, ExcelReportConfigurationDocument config)
@@ -101,7 +101,7 @@
 
             if (!compareItems.HasData2)
             {
-                FillNewItem(worksheet, rowId, columns, compareItems.Data.ToDictionary(item => item.Key, item => item.Value.Item1), config);
+                FillRemovedItem(worksheet, rowId, columns, compareItems.Data.ToDictionary(item => item.Key, item => item.Value.Item1), config);
                 return;
             }
 
@@ -166,11 +166,11 @@
 
         private void UpdateWorksheetStyles(IXLWorksheet worksheet, int dataCount, int columnsCount, ExcelReportConfigurationDocument config)
         {
-            worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 1, config.SkipRow + HEADER_ROW_COUNT + dataCount, config.SkipColumn + 1 + columnsCount * 2)
-                     .CreateTable();
+            //worksheet.Range(config.SkipRow + HEADER_ROW_COUNT + 1, config.SkipColumn + 1, config.SkipRow + HEADER_ROW_COUNT + dataCount, config.SkipColumn + 1 + columnsCount * 2)
+            //         .CreateTable();
 
             worksheet.Columns(1, config.SkipColumn).Width = 4;
-            worksheet.Columns(config.SkipColumn + 1, config.SkipColumn + 1 + columnsCount * 2).AdjustToContents();
+            worksheet.Columns(config.SkipColumn + 1, config.SkipColumn + 1 + columnsCount * 2).AdjustToContents(10.0, 50.0);
         }
     }
 }
