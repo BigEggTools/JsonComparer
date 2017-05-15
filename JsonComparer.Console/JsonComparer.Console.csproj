@@ -57,9 +57,8 @@
     <StartupObject>BigEgg.Tools.JsonComparer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BigEgg.Core, Version=2.1.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BigEgg.Core.2.1.0.4\lib\net452\BigEgg.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="BigEgg.Core, Version=2.1.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BigEgg.Core.2.1.1.6\lib\net452\BigEgg.Core.dll</HintPath>
     </Reference>
     <Reference Include="BigEgg.Tools.ConsoleExtension, Version=1.0.1.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BigEgg.Tools.ConsoleExtension.1.0.1.6\lib\net452\BigEgg.Tools.ConsoleExtension.dll</HintPath>
