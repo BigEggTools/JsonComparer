@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Console", "JsonComparer.Console\JsonComparer.Console.csproj", "{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AA88418-3E48-4C81-86E8-D782A5B0FED7} = {7AA88418-3E48-4C81-86E8-D782A5B0FED7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Core", "JsonComparer.Core\JsonComparer.Core.csproj", "{0929C18D-1691-4846-B63E-038BC8336FFA}"
 EndProject

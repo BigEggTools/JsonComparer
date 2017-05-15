@@ -88,6 +88,14 @@
       <Project>{0929c18d-1691-4846-b63e-038bc8336ffa}</Project>
       <Name>JsonComparer.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JsonComparer.Reports.Excel\JsonComparer.Reports.Excel.csproj">
+      <Project>{7aa88418-3e48-4c81-86e8-d782a5b0fed7}</Project>
+      <Name>JsonComparer.Reports.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JsonComparer.Reports\JsonComparer.Reports.csproj">
+      <Project>{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}</Project>
+      <Name>JsonComparer.Reports</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JsonComparer.Services\JsonComparer.Services.csproj">
       <Project>{fe0618c8-4fa5-43a3-9148-40a4ed08efd2}</Project>
       <Name>JsonComparer.Services</Name>

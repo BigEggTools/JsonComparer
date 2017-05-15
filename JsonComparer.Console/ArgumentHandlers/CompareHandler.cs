@@ -9,17 +9,20 @@
 
     using BigEgg.Tools.JsonComparer.Parameters;
     using BigEgg.Tools.JsonComparer.Services.Compares;
+    using BigEgg.Tools.JsonComparer.Reports;
 
     [Export(typeof(IArgumentHandler))]
     public class CompareHandler : IArgumentHandler
     {
-        private readonly ICompareService service;
+        private readonly ICompareService compareService;
+        private readonly IReportService reportService;
 
 
         [ImportingConstructor]
-        public CompareHandler(ICompareService compareService)
+        public CompareHandler(ICompareService compareService, IReportService reportService)
         {
-            service = compareService;
+            this.compareService = compareService;
+            this.reportService = reportService;
         }
 
 
@@ -42,6 +45,10 @@
             {
                 TextProgressBar.Draw(report.Current, report.Total);
             });
+
+            var compareFiles = await compareService.Compare(parameter.Path1, parameter.Path2, parameter.ConfigFile, progress);
+
+            await reportService.Output(compareFiles, parameter.Path1, parameter.Path2, parameter.OutputPath, false);
         }
     }
 }

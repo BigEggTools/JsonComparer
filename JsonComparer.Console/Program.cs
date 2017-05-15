@@ -11,6 +11,7 @@
     using BigEgg.Tools.JsonComparer.ArgumentHandlers;
     using BigEgg.Tools.JsonComparer.Parameters;
     using BigEgg.Tools.JsonComparer.Services.FileActions;
+    using System.IO;
 
     public class Program
     {
@@ -43,7 +44,9 @@
             catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Parser).Assembly));
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(IFileActionService).Assembly));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath("JsonComparer.Services.dll"))));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath("JsonComparer.Reports.dll"))));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath("JsonComparer.Reports.Excel.dll"))));
 
             container = new CompositionContainer(catalog);
             CompositionBatch batch = new CompositionBatch();
