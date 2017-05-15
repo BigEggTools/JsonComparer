@@ -9,5 +9,6 @@ skip_commits:
 configuration: Release
 before_build:
 - cmd: nuget restore
+image: Visual Studio 2017
 build:
   verbosity: minimal
