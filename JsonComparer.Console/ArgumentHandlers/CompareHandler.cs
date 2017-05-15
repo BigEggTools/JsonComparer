@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.Composition;
+    using System.Threading;
     using System.Threading.Tasks;
 
     using BigEgg.Progress;
@@ -45,9 +46,8 @@
             {
                 TextProgressBar.Draw(report.Current, report.Total);
             });
-
             var compareFiles = await compareService.Compare(parameter.Path1, parameter.Path2, parameter.ConfigFile, progress);
-
+            Thread.Sleep(200);
             await reportService.Output(compareFiles, parameter.Path1, parameter.Path2, parameter.OutputPath, false);
         }
     }

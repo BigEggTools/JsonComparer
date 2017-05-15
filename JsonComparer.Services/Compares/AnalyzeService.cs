@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using BigEgg.Tools.JsonComparer.CompareData;
     using BigEgg.Tools.JsonComparer.JsonDocuments;
@@ -11,7 +12,7 @@
     [Export(typeof(IAnalyzeService))]
     internal class AnalyzeService : IAnalyzeService
     {
-        public CompareFile Compare(JsonDocument document1, JsonDocument document2)
+        public Task<CompareFile> Compare(JsonDocument document1, JsonDocument document2)
         {
             Preconditions.Check(document1 != null || document2 != null, "Parameter 'document1' and 'document2' cannot be null at same time.");
             Preconditions.Check(document1 == null || document2 == null || document1.FileName.Equals(document2.FileName), "2 documents should with same name.");
@@ -20,44 +21,53 @@
 
             if (document1 == null)
             {
-                foreach (var property in document2)
+                return Task.Factory.StartNew(() =>
                 {
-                    compareItems.Add(NothingWithCompareData(property.Value));
-                };
-                return new CompareFile(document2.FileName, compareItems);
+                    foreach (var property in document2)
+                    {
+                        compareItems.Add(NothingWithCompareData(property.Value));
+                    };
+                    return new CompareFile(document2.FileName, compareItems);
+                });
             }
 
             if (document2 == null)
             {
-                foreach (var property in document1)
+                return Task.Factory.StartNew(() =>
                 {
-                    compareItems.Add(CompareWithNothing(property.Value));
-                };
-                return new CompareFile(document1.FileName, compareItems);
+                    foreach (var property in document1)
+                    {
+                        compareItems.Add(CompareWithNothing(property.Value));
+                    };
+                    return new CompareFile(document1.FileName, compareItems);
+                });
             }
 
             var properties1 = document1.Properties;
             var properties2 = document2.Properties;
             var i = 0; var j = 0;
-            while (true)
+            return Task.Factory.StartNew(() =>
             {
-                if (i == properties1.Count)
+                while (true)
                 {
-                    while (j < properties2.Count) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
-                    break;
-                }
-                if (j == properties2.Count)
-                {
-                    while (i < properties1.Count) { compareItems.Add(CompareWithNothing(properties1[i++])); }
-                    break;
-                }
+                    if (i == properties1.Count)
+                    {
+                        while (j < properties2.Count) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
+                        break;
+                    }
+                    if (j == properties2.Count)
+                    {
+                        while (i < properties1.Count) { compareItems.Add(CompareWithNothing(properties1[i++])); }
+                        break;
+                    }
 
-                var compareResult = properties1[i].Name.CompareTo(properties2[j].Name);
-                if (compareResult > 0) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
-                else if (compareResult < 0) { compareItems.Add(CompareWithNothing(properties1[i++])); }
-                else { compareItems.Add(CompareWithAnother(properties1[i++], properties2[j++])); }
-            }
-            return new CompareFile(document1.FileName, compareItems);
+                    var compareResult = properties1[i].Name.CompareTo(properties2[j].Name);
+                    if (compareResult > 0) { compareItems.Add(NothingWithCompareData(properties2[j++])); }
+                    else if (compareResult < 0) { compareItems.Add(CompareWithNothing(properties1[i++])); }
+                    else { compareItems.Add(CompareWithAnother(properties1[i++], properties2[j++])); }
+                }
+                return new CompareFile(document1.FileName, compareItems);
+            });
         }
 
 

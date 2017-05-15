@@ -76,11 +76,13 @@
             var fileNames = filesFromPath1.Select(path => Path.GetFileName(path))
                                           .Concat(filesFromPath2.Select(path => Path.GetFileName(path)))
                                           .Distinct().ToList(); ;
-            Console.WriteLine($"Start compare the files. Total Number: {fileNames.Count}.");
+            Console.WriteLine($"Start Compare the Files. Total Number: {fileNames.Count}.");
             var result = new List<CompareFile>(fileNames.Count);
-            reportProgress(progress, new ProgressReport(0, fileNames.Count));
+
             foreach (var fileName in fileNames)
             {
+                reportProgress(progress, new ProgressReport(result.Count, fileNames.Count));
+
                 JsonDocument file1, file2;
 
                 try
@@ -94,12 +96,10 @@
                 }
                 catch { file2 = null; }
 
-                result.Add(analyzeService.Compare(file1, file2));
-                reportProgress(progress, new ProgressReport(result.Count, fileNames.Count));
+                result.Add(await analyzeService.Compare(file1, file2));
             }
+            reportProgress(progress, new ProgressReport(fileNames.Count, fileNames.Count));
 
-            Console.WriteLine();
-            Console.WriteLine("Done");
             Trace.Unindent();
             return result;
         }

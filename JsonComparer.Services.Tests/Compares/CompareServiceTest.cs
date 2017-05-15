@@ -122,7 +122,7 @@
                                       Assert.IsNotNull(document1);
                                       Assert.IsNotNull(document2);
                                   })
-                                  .Returns((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
+                                  .ReturnsAsync((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
 
                 var calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
@@ -161,7 +161,7 @@
                                       Assert.IsNull(document1);
                                       Assert.IsNotNull(document2);
                                   })
-                                  .Returns((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
+                                  .ReturnsAsync((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
 
                 var calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
@@ -200,7 +200,7 @@
                                       Assert.IsNotNull(document1);
                                       Assert.IsNull(document2);
                                   })
-                                  .Returns((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
+                                  .ReturnsAsync((JsonDocument document1, JsonDocument document2) => new CompareFile("article", new List<CompareItem>()));
 
                 var calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>
@@ -247,7 +247,7 @@
                                   {
                                       Assert.IsTrue(document1 == null || document2 == null);
                                   })
-                                  .Returns((JsonDocument document1, JsonDocument document2) => new CompareFile(document1 == null ? "article2" : "article1", new List<CompareItem>()));
+                                  .ReturnsAsync((JsonDocument document1, JsonDocument document2) => new CompareFile(document1 == null ? "article2" : "article1", new List<CompareItem>()));
 
                 var calledCount_SplitObjectInObject = 0;
                 var progress = new Progress<IProgressReport>(report =>

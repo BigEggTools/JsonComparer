@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using BigEgg.UnitTesting;
@@ -46,11 +47,11 @@
         public class LogicTest : TestClassBase
         {
             [TestMethod]
-            public void Document1_Null()
+            public async Task Document1_Null()
             {
                 var service = Container.GetExportedValue<IAnalyzeService>();
 
-                var result = service.Compare(null, GenerateJsonDocument("file"));
+                var result = await service.Compare(null, GenerateJsonDocument("file"));
                 Assert.IsNotNull(result);
                 Assert.AreEqual("file", result.FileName);
                 Assert.AreEqual(1, result.CompareItems.Count);
@@ -67,11 +68,11 @@
             }
 
             [TestMethod]
-            public void Document2_Null()
+            public async Task Document2_Null()
             {
                 var service = Container.GetExportedValue<IAnalyzeService>();
 
-                var result = service.Compare(GenerateJsonDocument("file"), null);
+                var result = await service.Compare(GenerateJsonDocument("file"), null);
                 Assert.IsNotNull(result);
                 Assert.AreEqual("file", result.FileName);
                 Assert.AreEqual(1, result.CompareItems.Count);
@@ -88,11 +89,11 @@
             }
 
             [TestMethod]
-            public void Document1_Empty()
+            public async Task Document1_Empty()
             {
                 var service = Container.GetExportedValue<IAnalyzeService>();
 
-                var result = service.Compare(GenerateEmptyJsonDocument("file"), GenerateJsonDocument("file"));
+                var result = await service.Compare(GenerateEmptyJsonDocument("file"), GenerateJsonDocument("file"));
                 Assert.IsNotNull(result);
                 Assert.AreEqual("file", result.FileName);
                 Assert.AreEqual(1, result.CompareItems.Count);
@@ -109,11 +110,11 @@
             }
 
             [TestMethod]
-            public void Document2_Empty()
+            public async Task Document2_Empty()
             {
                 var service = Container.GetExportedValue<IAnalyzeService>();
 
-                var result = service.Compare(GenerateJsonDocument("file"), GenerateEmptyJsonDocument("file"));
+                var result = await service.Compare(GenerateJsonDocument("file"), GenerateEmptyJsonDocument("file"));
                 Assert.IsNotNull(result);
                 Assert.AreEqual("file", result.FileName);
                 Assert.AreEqual(1, result.CompareItems.Count);
@@ -130,11 +131,11 @@
             }
 
             [TestMethod]
-            public void DifferentData()
+            public async Task DifferentData()
             {
                 var service = Container.GetExportedValue<IAnalyzeService>();
 
-                var result = service.Compare(GenerateComplexJsonDocument1("file"), GenerateComplexJsonDocument2("file"));
+                var result = await service.Compare(GenerateComplexJsonDocument1("file"), GenerateComplexJsonDocument2("file"));
                 Assert.IsNotNull(result);
                 Assert.AreEqual("file", result.FileName);
                 Assert.AreEqual(3, result.CompareItems.Count);

@@ -1,7 +1,9 @@
 ﻿namespace BigEgg.Tools.JsonComparer.Reports.Excel
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
+    using System.Diagnostics;
     using System.IO;
     using System.Threading.Tasks;
 
@@ -49,33 +51,41 @@
 
             var config = new ExcelReportConfigurationDocument();
 
+            Console.WriteLine($"Start Export the Report of the Compared Files. Total Number: {compareFiles.Count}.");
             if (split)
             {
+                Console.WriteLine($"Report will be Split.");
                 return Task.Factory.StartNew(() =>
                 {
+                    Trace.Indent();
                     foreach (var file in compareFiles)
                     {
+                        Trace.TraceInformation($"Output report file for {file.FileName}.");
                         var document = documentType.New();
                         document.NewSheet(file, path1, path2, config);
 
                         var reportFileName = Path.Combine(outputPath, string.Format(splitReportFileNameFormat, file.FileName));
                         documentType.Save(document, reportFileName);
                     }
+                    Trace.Unindent();
                 });
             }
             else
             {
                 return Task.Factory.StartNew(() =>
                 {
+                    Trace.Indent();
                     var document = documentType.New();
 
                     foreach (var file in compareFiles)
                     {
+                        Trace.TraceInformation($"Output report file for {file.FileName}.");
                         document.NewSheet(file, path1, path2, config);
                     }
 
                     var reportFileName = Path.Combine(outputPath, reportFileNameFormat);
                     documentType.Save(document, reportFileName);
+                    Trace.Unindent();
                 });
             }
         }
