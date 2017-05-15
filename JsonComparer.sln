@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Services.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Reports", "JsonComparer.Reports\JsonComparer.Reports.csproj", "{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Core.Tests", "JsonComparer.Core.Tests\JsonComparer.Core.Tests.csproj", "{FFACE19D-2F07-4757-8AAA-B271F217B77B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D92BD4B-86AA-4BF5-A7F3-7A7B3B0B3D05}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor-ci.yml = appveyor-ci.yml
@@ -55,10 +53,6 @@ Global
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4B82D1-A5A1-4A49-B9F1-B63F0044EA2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFACE19D-2F07-4757-8AAA-B271F217B77B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AA88418-3E48-4C81-86E8-D782A5B0FED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AA88418-3E48-4C81-86E8-D782A5B0FED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AA88418-3E48-4C81-86E8-D782A5B0FED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
