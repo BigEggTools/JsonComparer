@@ -18,7 +18,7 @@
         {
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new TypeCatalog(
-                typeof(JsonDocumentService), typeof(FileActionActionService),
+                typeof(JsonDocumentService), typeof(FileActionService),
                 typeof(CompareConfigDocumentType), typeof(ReadFileService), typeof(AnalyzeService), typeof(CompareService)
             ));
             container = new CompositionContainer(catalog);

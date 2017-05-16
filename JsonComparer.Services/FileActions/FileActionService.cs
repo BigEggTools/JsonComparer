@@ -16,16 +16,16 @@
     /// The logic for split JSON file or merge JSON files.
     /// </summary>
     [Export(typeof(IFileActionService))]
-    public class FileActionActionService : IFileActionService
+    public class FileActionService : IFileActionService
     {
         private readonly IJsonDocumentService jsonDocumentService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileActionActionService"/> class.
+        /// Initializes a new instance of the <see cref="FileActionService"/> class.
         /// </summary>
         /// <param name="jsonDocumentService">The json document service.</param>
         [ImportingConstructor]
-        public FileActionActionService(IJsonDocumentService jsonDocumentService)
+        public FileActionService(IJsonDocumentService jsonDocumentService)
         {
             this.jsonDocumentService = jsonDocumentService;
         }
