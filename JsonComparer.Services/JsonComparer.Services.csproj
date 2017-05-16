@@ -57,11 +57,14 @@
     <Compile Include="Compares\IReadFileService.cs" />
     <Compile Include="Compares\ICompareService.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="FileActions\FileActionService.cs" />
     <Compile Include="FileActions\IFileActionService.cs" />
     <Compile Include="Json\IJsonDocumentService.cs" />
     <Compile Include="Json\JsonDocumentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FileActions\FileActionService.cs" />
+    <Compile Include="FileActions\FileActionService.Split.cs" >
+      <DependentUpon>FileActionService.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JsonComparer.Core\JsonComparer.Core.csproj">
