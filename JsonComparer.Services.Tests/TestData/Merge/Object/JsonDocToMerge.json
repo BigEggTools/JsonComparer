@@ -1,0 +1,22 @@
+﻿{
+  "version": "v1",
+  "array": [
+    {
+      "name": "BigEgg",
+      "age": 30,
+      "gender": "Male"
+    },
+    {
+      "name": "Pupil",
+      "age": 31,
+      "gender": "Female"
+    }
+  ],
+  "number": [ 1, 2 ],
+  "data": {
+  },
+  "status": {
+    "progress": 1,
+    "total": 10
+  }
+}

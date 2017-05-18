@@ -77,6 +77,8 @@
                     throw new NotSupportedException($"Cannot merge to JSON node {nodeName} in {fileName}");
             }
 
+            jsonDocumentService.WriteJsonFile(jsonFile, $"{Path.GetDirectoryName(fileName)}\\{Path.GetFileNameWithoutExtension(fileName)}_New{Path.GetExtension(fileName)}");
+
             Trace.TraceInformation($"Merge JSON data in file {fileName} complete.");
             Trace.Unindent();
         }
