@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
 
@@ -10,8 +11,6 @@
 
     using BigEgg.Tools.JsonComparer.ArgumentHandlers;
     using BigEgg.Tools.JsonComparer.Parameters;
-    using BigEgg.Tools.JsonComparer.Services.FileActions;
-    using System.IO;
 
     public class Program
     {
@@ -26,8 +25,9 @@
                     container,
                     ParserSettings.Builder().WithDefault().CaseSensitive(false).ComputeDisplayWidth().Build())
                 .Parse(args,
+                    typeof(CompareParameter),
                     typeof(SplitParameter),
-                    typeof(CompareParameter));
+                    typeof(MergeParameter));
             if (parameter == null) { return; }
 
             var handlers = container.GetExportedValues<IArgumentHandler>();

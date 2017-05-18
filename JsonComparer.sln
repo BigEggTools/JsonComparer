@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Console", "JsonComparer.Console\JsonComparer.Console.csproj", "{90D76DD6-B236-4DBC-80C8-18EF48CC46EA}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -26,6 +26,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Reports.Excel", "JsonComparer.Reports.Excel\JsonComparer.Reports.Excel.csproj", "{7AA88418-3E48-4C81-86E8-D782A5B0FED7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonComparer.Reports.Excel.Tests", "JsonComparer.Reports.Excel.Tests\JsonComparer.Reports.Excel.Tests.csproj", "{8482DEF9-AE49-4B37-A7BA-3B81379FA5C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{82C451B0-1A10-44B4-B200-38783DA85425}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Compare.md = docs\Compare.md
+		docs\Split.md = docs\Split.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,5 +70,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82C451B0-1A10-44B4-B200-38783DA85425} = {5D92BD4B-86AA-4BF5-A7F3-7A7B3B0B3D05}
 	EndGlobalSection
 EndGlobal

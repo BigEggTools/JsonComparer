@@ -72,8 +72,10 @@
   <ItemGroup>
     <Compile Include="ArgumentHandlers\IArgumentHandler.cs" />
     <Compile Include="ArgumentHandlers\CompareHandler.cs" />
+    <Compile Include="ArgumentHandlers\MergeFileHandler.cs" />
     <Compile Include="ArgumentHandlers\SplitFileHandler.cs" />
     <Compile Include="Parameters\CompareParameter.cs" />
+    <Compile Include="Parameters\MergeParameter.cs" />
     <Compile Include="Parameters\SplitParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
