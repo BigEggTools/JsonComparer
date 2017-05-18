@@ -18,7 +18,7 @@
         [TestClass]
         public class SplitTest : TestClassBase
         {
-            private const string TEST_JSON_FILE = "TestData\\JsonDocToSplit.json";
+            private const string TEST_JSON_FILE = "TestData\\Split\\JsonDocToSplit.json";
             private const string OUTPUT_PATH = "out";
             private const string VERSION_NODE_NAME = "version";
             private const string ARRAY_NODE_NAME = "array";

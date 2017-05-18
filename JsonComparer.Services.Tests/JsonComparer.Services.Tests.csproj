@@ -98,7 +98,7 @@
     <Content Include="TestData\SimpleJson.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\JsonDocToSplit.json">
+    <Content Include="TestData\Split\JsonDocToSplit.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\Compares\Configurations\config.other">
