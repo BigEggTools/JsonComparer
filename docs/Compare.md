@@ -5,7 +5,7 @@ Compare the JSON files in two folder.
 
 Usage of compare function.
 ```
-JsonComparer: v0.2.0.8
+JsonComparer: v0.3.0.9
 
 Command 'compare' - Compare the JSON files in two folder.
 

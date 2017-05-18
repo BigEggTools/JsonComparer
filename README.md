@@ -11,7 +11,7 @@ Will also support the split JSON file and merge JSON files functions
 ## Features
 To get what current verion of this tool support, use --help to get the following information:
 ```
-JsonComparer: v0.2.0.8
+JsonComparer: v0.3.0.9
 
 Application support these commands:
 

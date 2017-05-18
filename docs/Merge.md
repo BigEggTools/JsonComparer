@@ -8,7 +8,7 @@ Merge the splited JSON files to node in one JSON file, to build a big file.
 Usage of merge function.
 
 ```
-JsonComparer: v0.2.0.8
+JsonComparer: v0.3.0.9
 
 Command 'merge' - Merge the splited JSON files to node in one JSON file, to build a big file.
 

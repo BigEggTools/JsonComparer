@@ -7,7 +7,7 @@ Split the big JSON file to multiple small files.
 Usage of split function.
 
 ```
-JsonComparer: v0.2.0.8
+JsonComparer: v0.3.0.9
 
 Command 'split' - Split the big JSON file to multiple small files.
 
