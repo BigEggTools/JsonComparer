@@ -6,6 +6,7 @@ skip_tags: true
 skip_commits:
   files:
     - '**/*.md'
+    - 'docs/*.*'
 configuration: Release
 assembly_info:
   patch: true

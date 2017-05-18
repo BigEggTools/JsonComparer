@@ -1,5 +1,5 @@
 # Split JSON File
-Split the big JSON file to multiple small files
+Split the big JSON file to multiple small files.
 - Can split the Json Object's Properties and the Json Array.
 
 ## Usage

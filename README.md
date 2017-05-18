@@ -15,13 +15,15 @@ JsonComparer: v0.2.0.8
 
 Application support these commands:
 
-    split    |  Split the big JSON file to multiple small files.
     compare  |  Compare the JSON files in two folder.
+    split    |  Split the big JSON file to multiple small files.
+    merge    |  Merge the splited JSON files to node in one JSON file, to build a big file.
 
 For help on command detail, please run <command> --help to check
 ```
 
 To know more about the feature, please click the following links:
 
-* [Split](./docs/Split.md)
 * [Compare](./docs/Compare.md)
+* [Split](./docs/Split.md)
+* [Merge](./docs/Merge.md)

@@ -30,6 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{82C451B0-1A10-44B4-B200-38783DA85425}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Compare.md = docs\Compare.md
+		docs\Merge.md = docs\Merge.md
 		docs\Split.md = docs\Split.md
 	EndProjectSection
 EndProject
